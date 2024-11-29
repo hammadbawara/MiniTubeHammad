@@ -1,0 +1,70 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4D64DB86-F734-41FD-8DB7-F1A937750CA3}|MiniTube.csproj|d:\\5th semester\\ead\\minitube\\minitube\\view\\insightview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D64DB86-F734-41FD-8DB7-F1A937750CA3}|MiniTube.csproj|solutionrelative:view\\insightview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D64DB86-F734-41FD-8DB7-F1A937750CA3}|MiniTube.csproj|d:\\5th semester\\ead\\minitube\\minitube\\view\\studioview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D64DB86-F734-41FD-8DB7-F1A937750CA3}|MiniTube.csproj|solutionrelative:view\\studioview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D64DB86-F734-41FD-8DB7-F1A937750CA3}|MiniTube.csproj|d:\\5th semester\\ead\\minitube\\minitube\\view\\insightview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4D64DB86-F734-41FD-8DB7-F1A937750CA3}|MiniTube.csproj|solutionrelative:view\\insightview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "StudioView.xaml.cs",
+              "DocumentMoniker": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\View\\StudioView.xaml.cs",
+              "RelativeDocumentMoniker": "View\\StudioView.xaml.cs",
+              "ToolTip": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\View\\StudioView.xaml.cs",
+              "RelativeToolTip": "View\\StudioView.xaml.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAwwEsAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T17:03:45.95Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "InsightView.xaml",
+              "DocumentMoniker": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\View\\InsightView.xaml",
+              "RelativeDocumentMoniker": "View\\InsightView.xaml",
+              "ToolTip": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\View\\InsightView.xaml",
+              "RelativeToolTip": "View\\InsightView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-11-19T16:59:23.037Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "InsightView.xaml.cs",
+              "DocumentMoniker": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\View\\InsightView.xaml.cs",
+              "RelativeDocumentMoniker": "View\\InsightView.xaml.cs",
+              "ToolTip": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\View\\InsightView.xaml.cs",
+              "RelativeToolTip": "View\\InsightView.xaml.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwB0AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T16:59:19.322Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

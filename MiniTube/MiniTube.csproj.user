@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="View\InsightView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\LoginViewIn.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\PlayerView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\RegisterationView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\RegisterationViewIn.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\ResetView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\StudioView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\UploadingView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\UserView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\InsightView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\LoginViewIn.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\PlayerView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\RegisterationView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\RegisterationViewIn.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ResetView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\StudioView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\UploadingView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\UserView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

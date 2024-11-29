@@ -1,0 +1,101 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\asCreator.png" />
+    <None Remove="Images\asViewer.png" />
+    <None Remove="Images\back.png" />
+    <None Remove="Images\bg.png" />
+    <None Remove="Images\bg2.png" />
+    <None Remove="Images\close.jpg" />
+    <None Remove="Images\comment.png" />
+    <None Remove="Images\delete.png" />
+    <None Remove="Images\description.png" />
+    <None Remove="Images\email.png" />
+    <None Remove="Images\insight.png" />
+    <None Remove="Images\k1.png" />
+    <None Remove="Images\k2.png" />
+    <None Remove="Images\k3.png" />
+    <None Remove="Images\lbut.png" />
+    <None Remove="Images\like.png" />
+    <None Remove="Images\liked.png" />
+    <None Remove="Images\logo.jpg" />
+    <None Remove="Images\logout.png" />
+    <None Remove="Images\mini.jpg" />
+    <None Remove="Images\pass.png" />
+    <None Remove="Images\pause.png" />
+    <None Remove="Images\placeholder.png" />
+    <None Remove="Images\play.png" />
+    <None Remove="Images\register.png" />
+    <None Remove="Images\reset.png" />
+    <None Remove="Images\search.png" />
+    <None Remove="Images\sel.png" />
+    <None Remove="Images\stop.png" />
+    <None Remove="Images\studio.png" />
+    <None Remove="Images\title.png" />
+    <None Remove="Images\un.png" />
+    <None Remove="Images\upload.png" />
+    <None Remove="Images\uploadthumb.png" />
+    <None Remove="Images\uploadvid.png" />
+    <None Remove="Images\vlogo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\asCreator.png" />
+    <Resource Include="Images\asViewer.png" />
+    <Resource Include="Images\back.png" />
+    <Resource Include="Images\bg.png" />
+    <Resource Include="Images\bg2.png" />
+    <Resource Include="Images\close.jpg" />
+    <Resource Include="Images\comment.png" />
+    <Resource Include="Images\delete.png" />
+    <Resource Include="Images\description.png" />
+    <Resource Include="Images\email.png" />
+    <Resource Include="Images\insight.png" />
+    <Resource Include="Images\k1.png" />
+    <Resource Include="Images\k2.png" />
+    <Resource Include="Images\k3.png" />
+    <Resource Include="Images\lbut.png" />
+    <Resource Include="Images\like.png" />
+    <Resource Include="Images\liked.png" />
+    <Resource Include="Images\logo.jpg" />
+    <Resource Include="Images\logout.png" />
+    <Resource Include="Images\mini.jpg" />
+    <Resource Include="Images\pass.png" />
+    <Resource Include="Images\pause.png" />
+    <Resource Include="Images\placeholder.png" />
+    <Resource Include="Images\play.png" />
+    <Resource Include="Images\register.png" />
+    <Resource Include="Images\reset.png" />
+    <Resource Include="Images\search.png" />
+    <Resource Include="Images\sel.png" />
+    <Resource Include="Images\stop.png" />
+    <Resource Include="Images\studio.png" />
+    <Resource Include="Images\title.png" />
+    <Resource Include="Images\un.png" />
+    <Resource Include="Images\upload.png" />
+    <Resource Include="Images\uploadthumb.png" />
+    <Resource Include="Images\uploadvid.png" />
+    <Resource Include="Images\vlogo.png" />
+  </ItemGroup>
+
+</Project>

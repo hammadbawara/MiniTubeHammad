@@ -1,0 +1,161 @@
+﻿<Window x:Class="MiniTube.View.RegisterationViewIn"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:MiniTube.View" mc:Ignorable="d" Title="MiniTube" Width="1920" Height="1080" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown" Background="Transparent" AllowsTransparency="True" WindowState="Maximized">
+    <Border Background="White">
+
+        <Border>
+            <Border.Background>
+                <ImageBrush ImageSource="/Images/bg.png" Opacity="1"/>
+            </Border.Background>
+            <Border Background="Transparent" BorderBrush="#9a06f0" BorderThickness="3" Opacity="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="25" />
+                            <ColumnDefinition Width="25"/>
+                            <ColumnDefinition Width="5"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Registeration" Foreground="Black" FontFamily="Wahoo" FontWeight="DemiBold" FontSize="12" Grid.Column="0" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        <Button Name="btn_minimize" Cursor="Hand" Grid.Column="1" BorderBrush="Transparent" Click="btn_minimize_Click" Opacity="0.8">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/Images/mini.jpg"/>
+                            </Button.Background>
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="18" Height="18" CornerRadius="9" Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+
+                        </Button>
+
+                        <Button Name="btn_close" Cursor="Hand" Grid.Column="2" BorderBrush="Transparent" Click="btn_close_Click" Opacity="0.8">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/Images/close.jpg"/>
+                            </Button.Background>
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="18" Height="18" CornerRadius="9" Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+
+                        </Button>
+
+                    </Grid>
+
+
+                    <StackPanel Width="250" Grid.Row="2" Orientation="Vertical" Margin="0,90,0,0">
+                        <Image Source="/Images/logo.jpg" Width="170" Height="170" Margin="0,10,0,0"/>
+                        <TextBlock Text="MiniTube" Foreground="Black" FontSize="27" FontFamily="Wahoo" FontWeight="DemiBold" HorizontalAlignment="Center" Margin="0,5,0,0">
+
+                        </TextBlock>
+
+                        <TextBlock Text="Usnername" Foreground="DarkGray" FontSize="14" FontFamily="Helvetica Lt Std" FontWeight="Medium" Margin="0,35,0,0">
+
+                        </TextBlock>
+
+
+
+                        <TextBox Name="txt_username" FontSize="13" FontFamily="Helvetica Lt Std" FontWeight="Medium" Foreground="black" CaretBrush="#9a06f0" BorderBrush="#9a06f0" BorderThickness="0,0,0,1.3" Height="22" VerticalContentAlignment="Center" Margin="0,5,0,0" Padding="28,0,0,0" KeyDown="txt_username_KeyDown">
+                            <TextBox.Background>
+                                <ImageBrush ImageSource="/Images/un.png" Stretch="Uniform" AlignmentX="Left"></ImageBrush>
+                            </TextBox.Background>
+
+                        </TextBox>
+
+
+                        <TextBlock Text="Password" Foreground="DarkGray" FontSize="14" FontFamily="Helvetica Lt Std" FontWeight="Medium" Margin="0,35,0,0">
+
+                        </TextBlock>
+
+
+
+                        <PasswordBox Name="txt_password" FontSize="13" FontFamily="Helvetica Lt Std" FontWeight="Medium" Foreground="black" CaretBrush="#9a06f0" BorderBrush="#9a06f0" BorderThickness="0,0,0,1.3" Height="22" VerticalContentAlignment="Center" Margin="0,5,0,0" Padding="28,0,0,0" KeyDown="txt_password_KeyDown">
+                            <PasswordBox.Background>
+                                <ImageBrush ImageSource="/Images/pass.png" Stretch="Uniform" AlignmentX="Left"></ImageBrush>
+                            </PasswordBox.Background>
+
+                        </PasswordBox>
+
+                        <TextBlock Text="Confirm Password" Foreground="DarkGray" FontSize="14" FontFamily="Helvetica Lt Std" FontWeight="Medium" Margin="0,35,0,0">
+
+                        </TextBlock>
+
+
+
+                        <PasswordBox Name="txt_confirm_password" FontSize="13" FontFamily="Helvetica Lt Std" FontWeight="Medium" Foreground="black" CaretBrush="#9a06f0" BorderBrush="#9a06f0" BorderThickness="0,0,0,1.3" Height="22" VerticalContentAlignment="Center" Margin="0,5,0,0" Padding="28,0,0,0" KeyDown="txt_confirm_password_KeyDown">
+                            <PasswordBox.Background>
+                                <ImageBrush ImageSource="/Images/pass.png" Stretch="Uniform" AlignmentX="Left"></ImageBrush>
+                            </PasswordBox.Background>
+
+                        </PasswordBox>
+
+
+                        <TextBlock Text="Email" Foreground="DarkGray" FontSize="14" FontFamily="Helvetica Lt Std" FontWeight="Medium" Margin="0,35,0,0">
+
+                        </TextBlock>
+
+
+
+                        <TextBox Name="txt_email" FontSize="13" FontFamily="Helvetica Lt Std" FontWeight="Medium" Foreground="black" CaretBrush="#9a06f0" BorderBrush="#9a06f0" BorderThickness="0,0,0,1.3" Height="22" VerticalContentAlignment="Center" Margin="0,5,0,0" Padding="28,0,0,0" KeyDown="txt_email_KeyDown">
+                            <TextBox.Background>
+                                <ImageBrush ImageSource="/Images/email.png" Stretch="Uniform" AlignmentX="Left"></ImageBrush>
+                            </TextBox.Background>
+
+                        </TextBox>
+
+                        <TextBlock Name="txt_error" FontSize="14" FontFamily="Helvetica Lt Std" FontWeight="Medium" Margin="0,35,0,0" HorizontalAlignment="Center" Width="245">
+
+                        </TextBlock>
+
+                        <Button Name="btn_register" Click="btn_register_Click" Cursor="Hand" Grid.Column="2" BorderBrush="Black"  Opacity="1" Margin="0,40,0,0">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/Images/Register.png"/>
+                            </Button.Background>
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="120" Height="35" CornerRadius="20" Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+
+                        </Button>
+                        <Button Name="btn_back" Cursor="Hand"  Click="btn_back_Click" HorizontalAlignment="Center"  Margin="0,20,0,0">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/Images/back.png" Stretch="Uniform"/>
+                            </Button.Background>
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="110" HorizontalAlignment="Center" Height="20" CornerRadius="15" Background="{TemplateBinding Background}">
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+
+                        </Button>
+
+                    </StackPanel>
+
+                </Grid>
+
+            </Border>
+        </Border>
+    </Border>
+</Window>
