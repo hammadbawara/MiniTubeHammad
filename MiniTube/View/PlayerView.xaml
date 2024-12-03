@@ -6,7 +6,9 @@
         WindowState="Maximized"
         Background="Transparent"
         AllowsTransparency="True"
-        WindowStyle="None" ResizeMode="NoResize">
+        WindowStyle="None" ResizeMode="NoResize"
+        PreviewKeyDown="Window_PreviewKeyDown"
+        >
 
     <Border Background="White">
 
@@ -35,7 +37,7 @@
 
                             </Grid.ColumnDefinitions>
 
-                            <TextBox  Grid.Column="1" Grid.Row="1" Name="txt_search" FontSize="14" FontFamily="Helvetica Lt Std" FontWeight="Medium" Foreground="black" CaretBrush="#9a06f0" BorderBrush="#9a06f0" BorderThickness="0,0,0,2.3" Height="19" VerticalContentAlignment="Center" Width="345" HorizontalAlignment="Right" Margin="0,0,-200,0"  KeyDown="txt_search_KeyDown"/>
+                            <TextBox TextChanged="txt_search_TextChanged" Grid.Column="1" Grid.Row="1" Name="txt_search" FontSize="14" FontFamily="Helvetica Lt Std" FontWeight="Medium" Foreground="black" CaretBrush="#9a06f0" BorderBrush="#9a06f0" BorderThickness="0,0,0,2.3" Height="19" VerticalContentAlignment="Center" Width="345" HorizontalAlignment="Right" Margin="0,0,-200,0"  KeyDown="txt_search_KeyDown"/>
                             <Button Name="btn_search" Cursor="Hand" Grid.Column="1" HorizontalAlignment="Right" Grid.Row="1"  BorderBrush="Black" Click="btn_search_Click" Opacity="1" Margin="0,-5,160,0">
                                 <Button.Background>
                                     <ImageBrush ImageSource="/Images/search.png"/>
@@ -103,17 +105,16 @@
 
 
 
-                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="-55,-130,0,0" ShowGridLines="True" Grid.Row="2" >
+                    <Grid Height="716.57 " Width="1751.2098 " HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-130,0,0" ShowGridLines="False" Grid.Row="2" >
 
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="978.83"/>
                             <ColumnDefinition Width="16.118 "/>
-                            <ColumnDefinition Width="191.5356  "/>
-                            <ColumnDefinition Width="16.118 "/>
-                            <ColumnDefinition Width="547.4243 "/>
+                            <ColumnDefinition Width="Auto"/>
+                            
 
                         </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0" ShowGridLines="True" >
+                        <Grid Grid.Column="0" ShowGridLines="False" >
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="550.3027 "/>
                                 <RowDefinition Height="16.068 "/>
@@ -123,7 +124,9 @@
                                 <RowDefinition Height="59.8978 "/>
                             </Grid.RowDefinitions>
 
-                            <Image Source="/Images/placeholder.png" Grid.Row="0"/>
+                            <MediaElement LoadedBehavior="Manual"
+              UnloadedBehavior="Manual"
+              Stretch="Uniform" Height="550.3027" Name="media_video" Source="/Images/placeholder.png" Grid.Row="0"/>
 
                             <Button Name="btn_play" Cursor="Hand" Width="100" HorizontalAlignment="Left" Grid.Row="2" BorderBrush="Black"  Opacity="1"  Click="btn_play_Click">
                                 <Button.Background>
@@ -139,8 +142,7 @@
                                 </Button.Template>
 
                             </Button>
-
-                            <Button Name="btn_pause" Margin="105,0,0,0" Cursor="Hand" Width="100" HorizontalAlignment="Left" Grid.Row="2" BorderBrush="Black"  Opacity="1" Click="btn_pause_Click" >
+                            <Button Name="btn_pause" Cursor="Hand" Width="100" HorizontalAlignment="Left" Grid.Row="2" BorderBrush="Black"  Opacity="1"  Click="btn_pause_Click">
                                 <Button.Background>
                                     <ImageBrush ImageSource="/Images/pause.png"/>
                                 </Button.Background>
@@ -155,7 +157,26 @@
 
                             </Button>
 
-                            <Image Source="/Images/like.png" Name="like"  Grid.Row="2"  HorizontalAlignment="Right"  Cursor="Hand" MouseLeftButtonDown="like_MouseLeftButtonDown" Margin="0,0,5,0" />
+                            <Button Name="btn_stop" Margin="105,0,0,0" Cursor="Hand" Width="100" HorizontalAlignment="Left" Grid.Row="2" BorderBrush="Black"  Opacity="1" Click="btn_stop_Click" >
+                                <Button.Background>
+                                    <ImageBrush ImageSource="/Images/stop.png"/>
+                                </Button.Background>
+
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Width="100" Height="35" CornerRadius="17" Background="{TemplateBinding Background}">
+                                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+
+                            </Button>
+
+                            <Image Source="/Images/like.png" Name="like"  Grid.Row="2"  HorizontalAlignment="Right"  Cursor="Hand" MouseLeftButtonDown="like_MouseLeftButtonDown" Margin="0,0,5,0">
+                                <Image.ToolTip>
+                                    <ToolTip Content="Like/Unlike this video" />
+                                </Image.ToolTip>
+                            </Image> 
                             <TextBox Grid.Row="2" Name="txt_cmt" FontSize="14" FontFamily="Helvetica Lt Std" FontWeight="Medium" Foreground="black" CaretBrush="#9a06f0" BorderBrush="#9a06f0" BorderThickness="0,0,0,2.3" Height="19" VerticalContentAlignment="Bottom" Width="345" HorizontalAlignment="Right" Margin="0,0,70,0"  KeyDown="txt_cmt_KeyDown"/>
                             <Button Name="btn_cmt" Cursor="Hand" HorizontalAlignment="Right" Grid.Row="2"  BorderBrush="Black" Click="btn_cmt_Click" Margin="0,0,415,0">
                                 <Button.Background>
@@ -178,113 +199,30 @@
 
                         </Grid>
 
-                        <Grid Grid.Column="2" ShowGridLines="True">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="107.6301 "/>
-                                <RowDefinition Height="16.06 "/>
-                                <RowDefinition Height="107.6301 "/>
-                                <RowDefinition Height="16.06 "/>
-                                <RowDefinition Height="107.6301 "/>
-                                <RowDefinition Height="16.06 "/>
-                                <RowDefinition Height="107.6301 "/>
-                                <RowDefinition Height="16.06 "/>
-                                <RowDefinition Height="107.6301 "/>
-                                <RowDefinition Height="16.06 "/>
-                                <RowDefinition Height="107.6301 "/>
+                       
+                      
+                    <ScrollViewer Grid.Column="2"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                            <WrapPanel    x:Name="wrp_suggestions" Orientation="Vertical" />
 
-                            </Grid.RowDefinitions>
-
-                            <Image Source="/Images/placeholder.png" Grid.Row="0"/>
-                            <Image Source="/Images/placeholder.png" Grid.Row="2"/>
-                            <Image Source="/Images/placeholder.png" Grid.Row="4"/>
-                            <Image Source="/Images/placeholder.png" Grid.Row="6"/>
-                            <Image Source="/Images/placeholder.png" Grid.Row="8"/>
-                            <Image Source="/Images/placeholder.png" Grid.Row="10"/>
-
-
-
-                        </Grid>
-
-                        <Grid Grid.Column="4" ShowGridLines="True">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="107.6301 "/>
-                                <RowDefinition Height="16.06 "/>
-                                <RowDefinition Height="107.6301 "/>
-                                <RowDefinition Height="16.06 "/>
-                                <RowDefinition Height="107.6301 "/>
-                                <RowDefinition Height="16.06 "/>
-                                <RowDefinition Height="107.6301 "/>
-                                <RowDefinition Height="16.06 "/>
-                                <RowDefinition Height="107.6301 "/>
-                                <RowDefinition Height="16.06 "/>
-                                <RowDefinition Height="107.6301 "/>
-                            </Grid.RowDefinitions>
-
-                            <Grid ShowGridLines="True" Grid.Row="0" >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="31.26 "/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-
-                                <TextBlock Name="title_1" Text="Lorem ipsum dolor sit amet, consectetuer"  Grid.Row="0" VerticalAlignment="Bottom" Margin="0,0,0,0"  HorizontalAlignment="Left" FontFamily="Helvetica LT Std" FontWeight="Bold" FontSize="18"   />
-                                <TextBlock Name="description_1" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="5" FontFamily="Helvetica LT Std" Text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in" FontWeight="Medium"  FontSize="13"></TextBlock>
-
-
-                            </Grid>
-
-                            <Grid ShowGridLines="True" Grid.Row="2" >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="31.26 "/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <TextBlock Name="title_2" Text="Lorem ipsum dolor sit amet, consectetuer"  Grid.Row="0" VerticalAlignment="Bottom" Margin="0,0,0,0"  HorizontalAlignment="Left" FontFamily="Helvetica LT Std" FontWeight="Bold" FontSize="18"   />
-                                <TextBlock Name="description_2" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="5" FontFamily="Helvetica LT Std" Text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in" FontWeight="Medium"  FontSize="13"></TextBlock>
-
-                            </Grid>
-
-                            <Grid ShowGridLines="True" Grid.Row="4" >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="31.26 "/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <TextBlock Name="title_3" Text="Lorem ipsum dolor sit amet, consectetuer"  Grid.Row="0" VerticalAlignment="Bottom" Margin="0,0,0,0"  HorizontalAlignment="Left" FontFamily="Helvetica LT Std" FontWeight="Bold" FontSize="18"   />
-                                <TextBlock Name="description_3" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="5" FontFamily="Helvetica LT Std" Text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in" FontWeight="Medium"  FontSize="13"></TextBlock>
-
-                            </Grid>
-
-                            <Grid ShowGridLines="True" Grid.Row="6" >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="31.26 "/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <TextBlock Name="title_4" Text="Lorem ipsum dolor sit amet, consectetuer"  Grid.Row="0" VerticalAlignment="Bottom" Margin="0,0,0,0"  HorizontalAlignment="Left" FontFamily="Helvetica LT Std" FontWeight="Bold" FontSize="18"   />
-                                <TextBlock Name="description_4" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="5" FontFamily="Helvetica LT Std" Text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in" FontWeight="Medium"  FontSize="13"></TextBlock>
-
-                            </Grid>
-
-                            <Grid ShowGridLines="True" Grid.Row="8" >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="31.26 "/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <TextBlock Name="title_5" Text="Lorem ipsum dolor sit amet, consectetuer"  Grid.Row="0" VerticalAlignment="Bottom" Margin="0,0,0,0"  HorizontalAlignment="Left" FontFamily="Helvetica LT Std" FontWeight="Bold" FontSize="18"   />
-                                <TextBlock Name="description_5" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="5" FontFamily="Helvetica LT Std" Text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in" FontWeight="Medium"  FontSize="13"></TextBlock>
-
-                            </Grid>
-
-                            <Grid ShowGridLines="True" Grid.Row="10" >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="31.26 "/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <TextBlock Name="title_6" Text="Lorem ipsum dolor sit amet, consectetuer"  Grid.Row="0" VerticalAlignment="Bottom" Margin="0,0,0,0"  HorizontalAlignment="Left" FontFamily="Helvetica LT Std" FontWeight="Bold" FontSize="18"   />
-                                <TextBlock Name="description_6" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="5" FontFamily="Helvetica LT Std" Text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in" FontWeight="Medium"  FontSize="13"></TextBlock>
-
-                            </Grid>
-
-                        </Grid>
-
+                    </ScrollViewer>
                     </Grid>
+
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="874,878,0,56" Width="100" Height="50" Grid.Row="2" >
+                        <Button Name="btn_back" Cursor="Hand"  Click="btn_back_Click" HorizontalAlignment="Center"  Margin="0,0,0,0">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/Images/back.png" Stretch="Uniform"/>
+                            </Button.Background>
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="110" HorizontalAlignment="Center" Height="20" CornerRadius="15" Background="{TemplateBinding Background}">
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+
+                        </Button>
+                    </StackPanel>
 
                 </Grid>
             </Border>

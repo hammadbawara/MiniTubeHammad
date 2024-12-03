@@ -20,6 +20,7 @@ namespace MiniTube.View
         public InsightView()
         {
             InitializeComponent();
+
         }
 
         public InsightView(int ui,int vi)
@@ -136,7 +137,7 @@ namespace MiniTube.View
 
         private void btn_back_Click(object sender, RoutedEventArgs e)
         {
-            StudioView studioView = new StudioView();
+            StudioView studioView = new StudioView(uId); // Pass the UserId
             studioView.Show();
             this.Close();
         }

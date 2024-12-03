@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 D:\5th semester\EAD\MiniTube\MiniTube\App.xaml
-9-1443237766
+12607176228
 
-21-1797980460
+24975748333
 238-273160779
-View\InsightView.xaml;View\LoginViewIn.xaml;View\PlayerView.xaml;View\RegisterationView.xaml;View\RegisterationViewIn.xaml;View\ResetView.xaml;View\StudioView.xaml;View\UploadingView.xaml;View\UserView.xaml;
+View\FirstPageControl.xaml;View\InsightView.xaml;View\LoginViewIn.xaml;View\PlayerControl.xaml;View\PlayerView.xaml;View\RegisterationView.xaml;View\RegisterationViewIn.xaml;View\ResetView.xaml;View\StudioControl.xaml;View\StudioView.xaml;View\UploadingView.xaml;View\UserView.xaml;
 
 False
 

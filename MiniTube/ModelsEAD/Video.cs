@@ -25,7 +25,7 @@ public partial class Video
 
     public DateTime? UploadDate { get; set; }
 
-    public int? ViewsCount { get; set; }
+    public int? CommentsCount { get; set; }
 
     public int? LikesCount { get; set; }
 

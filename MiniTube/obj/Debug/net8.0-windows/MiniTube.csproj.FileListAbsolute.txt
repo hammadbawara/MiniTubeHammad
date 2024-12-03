@@ -117,12 +117,15 @@ D:\5th semester\EAD\MiniTube\MiniTube\bin\Debug\net8.0-windows\runtimes\win-x86\
 D:\5th semester\EAD\MiniTube\MiniTube\bin\Debug\net8.0-windows\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 D:\5th semester\EAD\MiniTube\MiniTube\obj\Debug\net8.0-windows\MiniTube.csproj.AssemblyReference.cache
 D:\5th semester\EAD\MiniTube\MiniTube\obj\Debug\net8.0-windows\View\InsightView.baml
+D:\5th semester\EAD\MiniTube\MiniTube\obj\Debug\net8.0-windows\View\PlayerControl.baml
 D:\5th semester\EAD\MiniTube\MiniTube\obj\Debug\net8.0-windows\View\PlayerView.baml
 D:\5th semester\EAD\MiniTube\MiniTube\obj\Debug\net8.0-windows\View\StudioView.baml
 D:\5th semester\EAD\MiniTube\MiniTube\obj\Debug\net8.0-windows\View\UploadingView.baml
 D:\5th semester\EAD\MiniTube\MiniTube\obj\Debug\net8.0-windows\View\UserView.baml
+D:\5th semester\EAD\MiniTube\MiniTube\obj\Debug\net8.0-windows\View\FirstPageControl.g.cs
 D:\5th semester\EAD\MiniTube\MiniTube\obj\Debug\net8.0-windows\View\InsightView.g.cs
 D:\5th semester\EAD\MiniTube\MiniTube\obj\Debug\net8.0-windows\View\LoginViewIn.g.cs
+D:\5th semester\EAD\MiniTube\MiniTube\obj\Debug\net8.0-windows\View\PlayerControl.g.cs
 D:\5th semester\EAD\MiniTube\MiniTube\obj\Debug\net8.0-windows\View\PlayerView.g.cs
 D:\5th semester\EAD\MiniTube\MiniTube\obj\Debug\net8.0-windows\View\RegisterationView.g.cs
 D:\5th semester\EAD\MiniTube\MiniTube\obj\Debug\net8.0-windows\View\RegisterationViewIn.g.cs
@@ -133,6 +136,7 @@ D:\5th semester\EAD\MiniTube\MiniTube\obj\Debug\net8.0-windows\View\UserView.g.c
 D:\5th semester\EAD\MiniTube\MiniTube\obj\Debug\net8.0-windows\App.g.cs
 D:\5th semester\EAD\MiniTube\MiniTube\obj\Debug\net8.0-windows\MiniTube_MarkupCompile.cache
 D:\5th semester\EAD\MiniTube\MiniTube\obj\Debug\net8.0-windows\MiniTube_MarkupCompile.lref
+D:\5th semester\EAD\MiniTube\MiniTube\obj\Debug\net8.0-windows\View\FirstPageControl.baml
 D:\5th semester\EAD\MiniTube\MiniTube\obj\Debug\net8.0-windows\View\LoginViewIn.baml
 D:\5th semester\EAD\MiniTube\MiniTube\obj\Debug\net8.0-windows\View\RegisterationView.baml
 D:\5th semester\EAD\MiniTube\MiniTube\obj\Debug\net8.0-windows\View\RegisterationViewIn.baml
@@ -148,3 +152,5 @@ D:\5th semester\EAD\MiniTube\MiniTube\obj\Debug\net8.0-windows\refint\MiniTube.d
 D:\5th semester\EAD\MiniTube\MiniTube\obj\Debug\net8.0-windows\MiniTube.pdb
 D:\5th semester\EAD\MiniTube\MiniTube\obj\Debug\net8.0-windows\MiniTube.genruntimeconfig.cache
 D:\5th semester\EAD\MiniTube\MiniTube\obj\Debug\net8.0-windows\ref\MiniTube.dll
+D:\5th semester\EAD\MiniTube\MiniTube\obj\Debug\net8.0-windows\View\StudioControl.g.cs
+D:\5th semester\EAD\MiniTube\MiniTube\obj\Debug\net8.0-windows\View\StudioControl.baml

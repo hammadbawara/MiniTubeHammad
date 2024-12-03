@@ -3,16 +3,36 @@
   "WorkspaceRootPath": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4D64DB86-F734-41FD-8DB7-F1A937750CA3}|MiniTube.csproj|d:\\5th semester\\ead\\minitube\\minitube\\view\\insightview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4D64DB86-F734-41FD-8DB7-F1A937750CA3}|MiniTube.csproj|solutionrelative:view\\insightview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4D64DB86-F734-41FD-8DB7-F1A937750CA3}|MiniTube.csproj|d:\\5th semester\\ead\\minitube\\minitube\\view\\firstpagecontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4D64DB86-F734-41FD-8DB7-F1A937750CA3}|MiniTube.csproj|solutionrelative:view\\firstpagecontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4D64DB86-F734-41FD-8DB7-F1A937750CA3}|MiniTube.csproj|d:\\5th semester\\ead\\minitube\\minitube\\view\\studioview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4D64DB86-F734-41FD-8DB7-F1A937750CA3}|MiniTube.csproj|solutionrelative:view\\studioview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4D64DB86-F734-41FD-8DB7-F1A937750CA3}|MiniTube.csproj|d:\\5th semester\\ead\\minitube\\minitube\\view\\loginviewin.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4D64DB86-F734-41FD-8DB7-F1A937750CA3}|MiniTube.csproj|solutionrelative:view\\loginviewin.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4D64DB86-F734-41FD-8DB7-F1A937750CA3}|MiniTube.csproj|d:\\5th semester\\ead\\minitube\\minitube\\view\\insightview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{4D64DB86-F734-41FD-8DB7-F1A937750CA3}|MiniTube.csproj|solutionrelative:view\\insightview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{4D64DB86-F734-41FD-8DB7-F1A937750CA3}|MiniTube.csproj|d:\\5th semester\\ead\\minitube\\minitube\\view\\playerview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D64DB86-F734-41FD-8DB7-F1A937750CA3}|MiniTube.csproj|solutionrelative:view\\playerview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D64DB86-F734-41FD-8DB7-F1A937750CA3}|MiniTube.csproj|d:\\5th semester\\ead\\minitube\\minitube\\view\\playerview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4D64DB86-F734-41FD-8DB7-F1A937750CA3}|MiniTube.csproj|solutionrelative:view\\playerview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D64DB86-F734-41FD-8DB7-F1A937750CA3}|MiniTube.csproj|d:\\5th semester\\ead\\minitube\\minitube\\view\\userview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4D64DB86-F734-41FD-8DB7-F1A937750CA3}|MiniTube.csproj|solutionrelative:view\\userview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D64DB86-F734-41FD-8DB7-F1A937750CA3}|MiniTube.csproj|d:\\5th semester\\ead\\minitube\\minitube\\modelsead\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D64DB86-F734-41FD-8DB7-F1A937750CA3}|MiniTube.csproj|solutionrelative:modelsead\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D64DB86-F734-41FD-8DB7-F1A937750CA3}|MiniTube.csproj|d:\\5th semester\\ead\\minitube\\minitube\\view\\playercontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D64DB86-F734-41FD-8DB7-F1A937750CA3}|MiniTube.csproj|solutionrelative:view\\playercontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D64DB86-F734-41FD-8DB7-F1A937750CA3}|MiniTube.csproj|d:\\5th semester\\ead\\minitube\\minitube\\view\\playercontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4D64DB86-F734-41FD-8DB7-F1A937750CA3}|MiniTube.csproj|solutionrelative:view\\playercontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +42,101 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FirstPageControl.xaml",
+              "DocumentMoniker": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\View\\FirstPageControl.xaml",
+              "RelativeDocumentMoniker": "View\\FirstPageControl.xaml",
+              "ToolTip": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\View\\FirstPageControl.xaml",
+              "RelativeToolTip": "View\\FirstPageControl.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-03T10:52:25.536Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "StudioView.xaml.cs",
-              "DocumentMoniker": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\View\\StudioView.xaml.cs",
-              "RelativeDocumentMoniker": "View\\StudioView.xaml.cs",
-              "ToolTip": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\View\\StudioView.xaml.cs",
-              "RelativeToolTip": "View\\StudioView.xaml.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAAwwEsAAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T17:03:45.95Z",
+              "Title": "LoginViewIn.xaml",
+              "DocumentMoniker": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\View\\LoginViewIn.xaml",
+              "RelativeDocumentMoniker": "View\\LoginViewIn.xaml",
+              "ToolTip": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\View\\LoginViewIn.xaml",
+              "RelativeToolTip": "View\\LoginViewIn.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-03T10:52:14.978Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "InsightView.xaml",
-              "DocumentMoniker": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\View\\InsightView.xaml",
-              "RelativeDocumentMoniker": "View\\InsightView.xaml",
-              "ToolTip": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\View\\InsightView.xaml",
-              "RelativeToolTip": "View\\InsightView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-19T16:59:23.037Z",
+              "Title": "PlayerView.xaml.cs",
+              "DocumentMoniker": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\View\\PlayerView.xaml.cs",
+              "RelativeDocumentMoniker": "View\\PlayerView.xaml.cs",
+              "ToolTip": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\View\\PlayerView.xaml.cs",
+              "RelativeToolTip": "View\\PlayerView.xaml.cs",
+              "ViewState": "AgIAAPYAAAAAAAAAAAAgwDkBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T03:52:49.453Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "InsightView.xaml.cs",
-              "DocumentMoniker": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\View\\InsightView.xaml.cs",
-              "RelativeDocumentMoniker": "View\\InsightView.xaml.cs",
-              "ToolTip": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\View\\InsightView.xaml.cs*",
-              "RelativeToolTip": "View\\InsightView.xaml.cs*",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAQwB0AAAAdAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "Comment.cs",
+              "DocumentMoniker": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\ModelsEAD\\Comment.cs",
+              "RelativeDocumentMoniker": "ModelsEAD\\Comment.cs",
+              "ToolTip": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\ModelsEAD\\Comment.cs",
+              "RelativeToolTip": "ModelsEAD\\Comment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T16:59:19.322Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-03T03:56:12.254Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserView.xaml",
+              "DocumentMoniker": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\View\\UserView.xaml",
+              "RelativeDocumentMoniker": "View\\UserView.xaml",
+              "ToolTip": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\View\\UserView.xaml",
+              "RelativeToolTip": "View\\UserView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-03T03:54:24.559Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PlayerView.xaml",
+              "DocumentMoniker": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\View\\PlayerView.xaml",
+              "RelativeDocumentMoniker": "View\\PlayerView.xaml",
+              "ToolTip": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\View\\PlayerView.xaml",
+              "RelativeToolTip": "View\\PlayerView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-03T03:52:53.424Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PlayerControl.xaml.cs",
+              "DocumentMoniker": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\View\\PlayerControl.xaml.cs",
+              "RelativeDocumentMoniker": "View\\PlayerControl.xaml.cs",
+              "ToolTip": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\View\\PlayerControl.xaml.cs",
+              "RelativeToolTip": "View\\PlayerControl.xaml.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T03:51:25.062Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PlayerControl.xaml",
+              "DocumentMoniker": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\View\\PlayerControl.xaml",
+              "RelativeDocumentMoniker": "View\\PlayerControl.xaml",
+              "ToolTip": "D:\\5th semester\\EAD\\MiniTube\\MiniTube\\View\\PlayerControl.xaml",
+              "RelativeToolTip": "View\\PlayerControl.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-03T03:51:24.335Z"
             }
           ]
         }

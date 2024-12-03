@@ -13,6 +13,9 @@
     <Compile Update="View\LoginViewIn.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\PlayerControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\PlayerView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -25,10 +28,16 @@
     <Compile Update="View\ResetView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\StudioControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\StudioView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\UploadingView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\FirstPageControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\UserView.xaml.cs">
@@ -40,6 +49,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\LoginViewIn.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\PlayerControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\PlayerView.xaml">
@@ -54,10 +66,16 @@
     <Page Update="View\ResetView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\StudioControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\StudioView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\UploadingView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\FirstPageControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\UserView.xaml">

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MiniTube")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c55b73a047cd462a645b119f80d6b152d2ad89e0")]
 [assembly: System.Reflection.AssemblyProductAttribute("MiniTube")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MiniTube")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

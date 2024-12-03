@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="MiniTube.View.StudioControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MiniTube.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="122.56 " d:DesignWidth="895.68 "
+             MouseLeftButtonDown="UserControl_MouseLeftButtonDown">
+
+
+    <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Height="107.52 " Width="895.6822   ">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="191.341 "/>
+            <ColumnDefinition Width="21.5112"/>
+            <ColumnDefinition Width="460.74 "/>
+            <ColumnDefinition Width="21.51 "/>
+            <ColumnDefinition Width="63.28 "/>
+            <ColumnDefinition Width="137.3  "/>
+        </Grid.ColumnDefinitions>
+
+        <Image Stretch="Fill" Source="{Binding Thumbnail}" Grid.Column="0" />
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30.952 "/>
+                <RowDefinition Height="547.4243 "/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" HorizontalAlignment="Left" Text="{Binding Title, FallbackValue='No Title'}" TextWrapping="Wrap"
+        FontSize="16 " FontFamily="Helvetica Lt Std" FontWeight="Bold" Foreground="Black"/>
+            <TextBlock Grid.Row="1" HorizontalAlignment="Left" Text="{Binding Description, FallbackValue='No Description'}" TextWrapping="Wrap"
+        FontSize="13" FontFamily="Helvetica Lt Std" FontWeight="Medium" Foreground="Black"/>
+        </Grid>
+
+        <StackPanel Orientation="Horizontal" Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <TextBlock  Name="txt_cmt" Text="{Binding CommentsCount}"  Height="19"  Width="19" FontSize="13" FontWeight="Bold" FontFamily="Helvetica Lt Std" />
+            <Image Source="/Images/comment.png"  Height="19" Width="19"  />
+
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Column="5" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <TextBlock Text="{Binding LikesCount}"  Name="txt_like" Height="19"  Width="19" FontSize="13" FontWeight="Bold" FontFamily="Helvetica Lt Std"/>
+            <Image Source="/Images/like.png" Height="19" Width="19"  />
+
+
+        </StackPanel>
+        
+    </Grid>
+</UserControl>

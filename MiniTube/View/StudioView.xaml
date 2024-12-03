@@ -122,20 +122,22 @@
 
                     </Grid>
 
-                    <Grid  HorizontalAlignment="Center" VerticalAlignment="Top" Width="1750" ShowGridLines="True" Grid.Row="2" Margin="0,54,0,0" >
+                    <Grid  HorizontalAlignment="Center" VerticalAlignment="Top" Width="1749.7722 " Height="613.44 " ShowGridLines="True" Grid.Row="2" Margin="0,0,0,0" >
+                        
                         <!-- DataGrid for displaying video information -->
-                        <DataGrid x:Name="videoDataGrid" AutoGenerateColumns="False" 
+                      
+                        <!--<DataGrid x:Name="videoDataGrid" AutoGenerateColumns="False" 
           HorizontalAlignment="center"  SelectionChanged="videoDataGrid_SelectionChanged"
           VerticalGridLinesBrush="Transparent" HorizontalGridLinesBrush="Transparent"
           Background="White" BorderBrush="Transparent" BorderThickness="2">
 
-                            <!-- Row Style -->
+                            --><!-- Row Style --><!--
                             <DataGrid.RowStyle>
                                 <Style TargetType="DataGridRow">
                                     <Setter Property="Background" Value="White"/>
                                     <Setter Property="Foreground" Value="Black"/>
                                     <Style.Triggers>
-                                        <!-- On Mouse Enter: Change row background to purple and text color to white -->
+                                        --><!-- On Mouse Enter: Change row background to purple and text color to white --><!--
                                         <EventTrigger RoutedEvent="UIElement.MouseEnter">
                                             <BeginStoryboard>
                                                 <Storyboard>
@@ -145,7 +147,7 @@
                                             </BeginStoryboard>
                                         </EventTrigger>
 
-                                        <!-- On Mouse Leave: Revert row background to white and text color back to black -->
+                                        --><!-- On Mouse Leave: Revert row background to white and text color back to black --><!--
                                         <EventTrigger RoutedEvent="UIElement.MouseLeave">
                                             <BeginStoryboard>
                                                 <Storyboard>
@@ -155,7 +157,7 @@
                                             </BeginStoryboard>
                                         </EventTrigger>
 
-                                        <!-- On Row Selected: Change background to purple, text to white, and add border -->
+                                        --><!-- On Row Selected: Change background to purple, text to white, and add border --><!--
                                         <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" Value="True">
                                             <Setter Property="Background" Value="#9a06f0"/>
                                             <Setter Property="Foreground" Value="White"/>
@@ -166,7 +168,7 @@
                                 </Style>
                             </DataGrid.RowStyle>
 
-                            <!-- Column Header Style -->
+                            --><!-- Column Header Style --><!--
                             <DataGrid.ColumnHeaderStyle>
                                 <Style TargetType="DataGridColumnHeader">
                                     <Setter Property="HorizontalContentAlignment" Value="Left"/>
@@ -177,7 +179,7 @@
                                     <Setter Property="Foreground" Value="White"/>
 
                                     <Style.Triggers>
-                                        <!-- Hover effect on mouse enter -->
+                                        --><!-- Hover effect on mouse enter --><!--
                                         <EventTrigger RoutedEvent="UIElement.MouseEnter">
                                             <BeginStoryboard>
                                                 <Storyboard>
@@ -186,7 +188,7 @@
                                             </BeginStoryboard>
                                         </EventTrigger>
 
-                                        <!-- Revert color on mouse leave -->
+                                        --><!-- Revert color on mouse leave --><!--
                                         <EventTrigger RoutedEvent="UIElement.MouseLeave">
                                             <BeginStoryboard>
                                                 <Storyboard>
@@ -256,304 +258,15 @@
                                     </DataGridTextColumn.ElementStyle>
                                 </DataGridTextColumn>
                             </DataGrid.Columns>
-                        </DataGrid>
+                        </DataGrid>-->
+
+                        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                            <WrapPanel x:Name="wrp_front" Margin="-10,60,0,0" Orientation="Horizontal"  VerticalAlignment="Top" />
+                        </ScrollViewer>
+
                     </Grid>
 
-                    <!--<Grid  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="-120,-80,0,0" ShowGridLines="True" Grid.Row="2" >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="65.989 "/>
-                            <ColumnDefinition Width="191.341 "/>
-                            <ColumnDefinition Width="21.3364 "/>
-                            <ColumnDefinition Width="460.9126 "/>
-                            <ColumnDefinition Width="21.3364 "/>
-                            <ColumnDefinition Width="63.326 "/>
-                            <ColumnDefinition Width="137.3036 "/>
-                            <ColumnDefinition Width="21.4145 pt"/>
-                            <ColumnDefinition Width="191.341 "/>
-                            <ColumnDefinition Width="21.3364 "/>
-                            <ColumnDefinition Width="460.9126 "/>
-                            <ColumnDefinition Width="21.3364 "/>
-                            <ColumnDefinition Width="63.326 "/>
-                            <ColumnDefinition Width="70.3036 "/>
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="107.5179 "/>
-                            <RowDefinition Height="14.9646 "/>
-                            <RowDefinition Height="107.5179 "/>
-                            <RowDefinition Height="14.9646 "/>
-                            <RowDefinition Height="107.5179 "/>
-                            <RowDefinition Height="14.9646 "/>
-                            <RowDefinition Height="107.5179 "/>
-                            <RowDefinition Height="14.9646 "/>
-                            <RowDefinition Height="107.5179 "/>
-                            <RowDefinition Height="14.9646 "/>
-
-                        </Grid.RowDefinitions>
-
-                        <Grid Grid.Row="0" Grid.Column="3" ShowGridLines="True">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="31.0362 "/>
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-
-                            <TextBox Name="title1" Text="Place holder text for the titleof the video" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="0" FontFamily="Helvetica LT Std" FontWeight="Bold" FontSize="16"></TextBox>
-                            <TextBlock x:Name="des1" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="1" FontFamily="Helvetica LT Std" FontWeight="Medium" FontSize="12"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in</TextBlock>
-                        </Grid>
-
-
-                        <Grid Grid.Row="2" Grid.Column="3" ShowGridLines="True">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="31.0362 "/>
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <TextBox Name="title2" Text="Place holder text for the titleof the video" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="0" FontFamily="Helvetica LT Std" FontWeight="Bold" FontSize="16"></TextBox>
-                            <TextBlock x:Name="des2" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="1" FontFamily="Helvetica LT Std" FontWeight="Medium" FontSize="12"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in</TextBlock>
-
-                        </Grid>
-
-                        <Grid Grid.Row="4" Grid.Column="3" ShowGridLines="True">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="31.0362 "/>
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <TextBox Name="title3" Text="Place holder text for the titleof the video" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="0" FontFamily="Helvetica LT Std" FontWeight="Bold" FontSize="16"></TextBox>
-                            <TextBlock x:Name="des3" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="1" FontFamily="Helvetica LT Std" FontWeight="Medium" FontSize="12"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in</TextBlock>
-
-                        </Grid>
-
-                        <Grid Grid.Row="6" Grid.Column="3" ShowGridLines="True">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="31.0362 "/>
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <TextBox Name="title4" Text="Place holder text for the titleof the video" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="0" FontFamily="Helvetica LT Std" FontWeight="Bold" FontSize="16"></TextBox>
-                            <TextBlock x:Name="des4" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="1" FontFamily="Helvetica LT Std" FontWeight="Medium" FontSize="12"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in</TextBlock>
-
-                        </Grid>
-
-                        <Grid Grid.Row="8" Grid.Column="3" ShowGridLines="True">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="31.0362 "/>
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <TextBox Name="title5" Text="Place holder text for the titleof the video" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="0" FontFamily="Helvetica LT Std" FontWeight="Bold" FontSize="16"></TextBox>
-                            <TextBlock x:Name="des5" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="1" FontFamily="Helvetica LT Std" FontWeight="Medium" FontSize="12"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in</TextBlock>
-
-                        </Grid>
-
-                        <Grid Grid.Row="0" Grid.Column="10" ShowGridLines="True">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="31.0362 "/>
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <TextBox Name="title6" Text="Place holder text for the titleof the video" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="0" FontFamily="Helvetica LT Std" FontWeight="Bold" FontSize="16"></TextBox>
-                            <TextBlock x:Name="des6" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="1" FontFamily="Helvetica LT Std" FontWeight="Medium" FontSize="12"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in</TextBlock>
-
-                        </Grid>
-
-                        <Grid Grid.Row="2" Grid.Column="10" ShowGridLines="True">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="31.0362 "/>
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <TextBox Name="title7" Text="Place holder text for the titleof the video" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="0" FontFamily="Helvetica LT Std" FontWeight="Bold" FontSize="16"></TextBox>
-                            <TextBlock x:Name="des7" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="1" FontFamily="Helvetica LT Std" FontWeight="Medium" FontSize="12"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in</TextBlock>
-
-                        </Grid>
-
-                        <Grid Grid.Row="4" Grid.Column="10" ShowGridLines="True">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="31.0362 "/>
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <TextBox Name="title8" Text="Place holder text for the titleof the video" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="0" FontFamily="Helvetica LT Std" FontWeight="Bold" FontSize="16"></TextBox>
-                            <TextBlock x:Name="des8" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="1" FontFamily="Helvetica LT Std" FontWeight="Medium" FontSize="12"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in</TextBlock>
-
-                        </Grid>
-
-                        <Grid Grid.Row="6" Grid.Column="10" ShowGridLines="True">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="31.0362 "/>
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <TextBox Name="title9" Text="Place holder text for the titleof the video" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="0" FontFamily="Helvetica LT Std" FontWeight="Bold" FontSize="16"></TextBox>
-                            <TextBlock x:Name="des9" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="1" FontFamily="Helvetica LT Std" FontWeight="Medium" FontSize="12"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in</TextBlock>
-
-                        </Grid>
-
-                        <Grid Grid.Row="8" Grid.Column="10" ShowGridLines="True">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="31.0362 "/>
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <TextBox Name="title10" Text="Place holder text for the titleof the video" BorderBrush="Transparent" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="0" FontFamily="Helvetica LT Std" FontWeight="Bold" FontSize="16"></TextBox>
-                            <TextBlock x:Name="des10" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="1" FontFamily="Helvetica LT Std" FontWeight="Medium" FontSize="12"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in</TextBlock>
-
-                        </Grid>
-
-                        <Image Source="/Images/placeholder.png" Opacity="1" Grid.Column="1" Grid.Row="0" />
-                        <Image Source="/Images/placeholder.png" Opacity="1" Grid.Column="1" Grid.Row="2" />
-                        <Image Source="/Images/placeholder.png" Opacity="1" Grid.Column="1" Grid.Row="4" />
-                        <Image Source="/Images/placeholder.png" Opacity="1" Grid.Column="1" Grid.Row="6" />
-                        <Image Source="/Images/placeholder.png" Opacity="1" Grid.Column="1" Grid.Row="8" />
-
-                        <Image Source="/Images/placeholder.png" Opacity="1" Grid.Column="8" Grid.Row="0" />
-                        <Image Source="/Images/placeholder.png" Opacity="1" Grid.Column="8" Grid.Row="2" />
-                        <Image Source="/Images/placeholder.png" Opacity="1" Grid.Column="8" Grid.Row="4" />
-                        <Image Source="/Images/placeholder.png" Opacity="1" Grid.Column="8" Grid.Row="6" />
-                        <Image Source="/Images/placeholder.png" Opacity="1" Grid.Column="8" Grid.Row="8" />
-
-                        <Grid Grid.Column="5" Height="19" VerticalAlignment="Bottom">
-
-                            <Image Source="/Images/comment.png" Grid.Column="5" Grid.Row="0" Height="19" Width="19" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
-                            <TextBlock  Name="comnum1" Grid.Column="5" Height="19"  Width="19"/>
-
-                        </Grid>
-
-                        <Grid Grid.Column="6" Height="19" VerticalAlignment="Bottom">
-
-                            <TextBlock  Name="like1" Grid.Column="5" Height="19" HorizontalAlignment="Left"  Width="19"/>
-                            <Image Name="btn_like1" Source="/Images/like.png" Grid.Column="5" Grid.Row="0" Height="19" Width="19" HorizontalAlignment="Left" Margin="19,0,0,0" VerticalAlignment="Bottom" />
-
-                        </Grid>
-
-                        <Grid Grid.Column="5" Grid.Row="2" Height="19" VerticalAlignment="Bottom">
-
-                            <Image Source="/Images/comment.png" Grid.Column="5" Grid.Row="0" Height="19" Width="19" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
-                            <TextBlock  Name="comnum2" Grid.Column="5" Height="19"  Width="19"/>
-
-                        </Grid>
-
-                        <Grid Grid.Column="6" Grid.Row="2" Height="19" VerticalAlignment="Bottom">
-
-                            <TextBlock  Name="like2" Grid.Column="5" Height="19" HorizontalAlignment="Left"  Width="19"/>
-                            <Image Source="/Images/like.png" Grid.Column="5" Grid.Row="0" Height="19" Width="19" HorizontalAlignment="Left" Margin="19,0,0,0" VerticalAlignment="Bottom" />
-
-                        </Grid>
-
-                        <Grid Grid.Column="5" Grid.Row="4" Height="19" VerticalAlignment="Bottom">
-
-                            <Image Source="/Images/comment.png" Grid.Column="5" Grid.Row="0" Height="19" Width="19" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
-                            <TextBlock  Name="comnum3" Grid.Column="5" Height="19"  Width="19"/>
-
-                        </Grid>
-
-                        <Grid Grid.Column="6" Grid.Row="4" Height="19" VerticalAlignment="Bottom">
-
-                            <TextBlock  Name="like3" Grid.Column="5" Height="19" HorizontalAlignment="Left"  Width="19"/>
-                            <Image Source="/Images/like.png" Grid.Column="5" Grid.Row="0" Height="19" Width="19" HorizontalAlignment="Left" Margin="19,0,0,0" VerticalAlignment="Bottom" />
-
-                        </Grid>
-
-
-                        <Grid Grid.Column="5" Grid.Row="6" Height="19" VerticalAlignment="Bottom">
-
-                            <Image Source="/Images/comment.png" Grid.Column="5" Grid.Row="0" Height="19" Width="19" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
-                            <TextBlock  Name="comnum4" Grid.Column="5" Height="19"  Width="19"/>
-
-                        </Grid>
-
-                        <Grid Grid.Column="6" Grid.Row="6" Height="19" VerticalAlignment="Bottom">
-
-                            <TextBlock  Name="like4" Grid.Column="5" Height="19" HorizontalAlignment="Left"  Width="19"/>
-                            <Image Source="/Images/like.png" Grid.Column="5" Grid.Row="0" Height="19" Width="19" HorizontalAlignment="Left" Margin="19,0,0,0" VerticalAlignment="Bottom" />
-
-                        </Grid>
-
-
-                        <Grid Grid.Column="5" Grid.Row="8" Height="19" VerticalAlignment="Bottom">
-
-                            <Image Source="/Images/comment.png" Grid.Column="5" Grid.Row="0" Height="19" Width="19" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
-                            <TextBlock  Name="comnum5" Grid.Column="5" Height="19"  Width="19"/>
-
-                        </Grid>
-
-                        <Grid Grid.Column="6" Grid.Row="8" Height="19" VerticalAlignment="Bottom">
-
-                            <TextBlock  Name="like5" Grid.Column="5" Height="19" HorizontalAlignment="Left"  Width="19"/>
-                            <Image Source="/Images/like.png" Grid.Column="5" Grid.Row="0" Height="19" Width="19" HorizontalAlignment="Left" Margin="19,0,0,0" VerticalAlignment="Bottom" />
-
-                        </Grid>
-
-
-
-                        <Grid Grid.Column="12" Height="19" VerticalAlignment="Bottom">
-
-                            <Image Source="/Images/comment.png" Grid.Column="5" Grid.Row="0" Height="19" Width="19" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
-                            <TextBlock  Name="comnum6" Grid.Column="5" Height="19"  Width="19"/>
-
-                        </Grid>
-
-                        <Grid Grid.Column="13" Height="19" VerticalAlignment="Bottom">
-
-                            <TextBlock  Name="like6" Grid.Column="5" Height="19" HorizontalAlignment="Left"  Width="19"/>
-                            <Image Source="/Images/like.png" Grid.Column="5" Grid.Row="0" Height="19" Width="19" HorizontalAlignment="Left" Margin="19,0,0,0" VerticalAlignment="Bottom" />
-
-                        </Grid>
-
-                        <Grid Grid.Column="12" Grid.Row="2" Height="19" VerticalAlignment="Bottom">
-
-                            <Image Source="/Images/comment.png" Grid.Column="5" Grid.Row="0" Height="19" Width="19" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
-                            <TextBlock  Name="comnum7" Grid.Column="5" Height="19"  Width="19"/>
-
-                        </Grid>
-
-                        <Grid Grid.Column="13" Grid.Row="2" Height="19" VerticalAlignment="Bottom">
-
-                            <TextBlock  Name="like7" Grid.Column="5" Height="19" HorizontalAlignment="Left"  Width="19"/>
-                            <Image Source="/Images/like.png" Grid.Column="5" Grid.Row="0" Height="19" Width="19" HorizontalAlignment="Left" Margin="19,0,0,0" VerticalAlignment="Bottom" />
-
-                        </Grid>
-
-                        <Grid Grid.Column="12" Grid.Row="4" Height="19" VerticalAlignment="Bottom">
-
-                            <Image Source="/Images/comment.png" Grid.Column="5" Grid.Row="0" Height="19" Width="19" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
-                            <TextBlock  Name="comnum8" Grid.Column="5" Height="19"  Width="19"/>
-
-                        </Grid>
-
-                        <Grid Grid.Column="13" Grid.Row="4" Height="19" VerticalAlignment="Bottom">
-
-                            <TextBlock  Name="like8" Grid.Column="5" Height="19" HorizontalAlignment="Left"  Width="19"/>
-                            <Image Source="/Images/like.png" Grid.Column="5" Grid.Row="0" Height="19" Width="19" HorizontalAlignment="Left" Margin="19,0,0,0" VerticalAlignment="Bottom" />
-
-                        </Grid>
-
-
-                        <Grid Grid.Column="12" Grid.Row="6" Height="19" VerticalAlignment="Bottom">
-
-                            <Image Source="/Images/comment.png" Grid.Column="5" Grid.Row="0" Height="19" Width="19" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
-                            <TextBlock  Name="comnum9" Grid.Column="5" Height="19"  Width="19"/>
-
-                        </Grid>
-
-                        <Grid Grid.Column="13" Grid.Row="6" Height="19" VerticalAlignment="Bottom">
-
-                            <TextBlock  Name="like9" Grid.Column="5" Height="19" HorizontalAlignment="Left"  Width="19"/>
-                            <Image Source="/Images/like.png" Grid.Column="5" Grid.Row="0" Height="19" Width="19" HorizontalAlignment="Left" Margin="19,0,0,0" VerticalAlignment="Bottom" />
-
-                        </Grid>
-
-
-                        <Grid Grid.Column="12" Grid.Row="8" Height="19" VerticalAlignment="Bottom">
-
-                            <Image Source="/Images/comment.png" Grid.Column="5" Grid.Row="0" Height="19" Width="19" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
-                            <TextBlock  Name="comnum10" Grid.Column="5" Height="19"  Width="19"/>
-
-                        </Grid>
-
-                        <Grid Grid.Column="13" Grid.Row="8" Height="19" VerticalAlignment="Bottom">
-
-                            <TextBlock  Name="like10" Grid.Column="5" Height="19" HorizontalAlignment="Left"  Width="19"/>
-                            <Image Source="/Images/like.png" Grid.Column="5" Grid.Row="0" Height="19" Width="19" HorizontalAlignment="Left" Margin="19,0,0,0" VerticalAlignment="Bottom" />
-
-                        </Grid>
-
-
-
-                    </Grid>-->
+                    
 
                     <StackPanel Grid.Row="2"  Orientation="Horizontal" HorizontalAlignment="center" Margin="0,807,0,0" Width="100" Height="50" >
                         <Button x:Name="btn_back" Cursor="Hand"  Click="btn_back_Click">

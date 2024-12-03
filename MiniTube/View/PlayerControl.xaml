@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="MiniTube.View.PlayerControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="123.7975" d:DesignWidth="754.8241" Background="Transparent"
+             MouseLeftButtonDown="UserControl_MouseLeftButtonDown">
+
+    <Grid VerticalAlignment="Top" Height="106.5913 " Width="754.8241 ">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="191.339 "/>
+            <ColumnDefinition Width="16.06 "/>
+            <ColumnDefinition Width="547.4243 "/>
+        </Grid.ColumnDefinitions>
+
+        <Image Stretch="Fill" Source="{Binding ImagePath}" Grid.Column="0" />
+
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30.952 "/>
+                <RowDefinition Height="547.4243 "/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" HorizontalAlignment="Left" Text="{Binding Title, FallbackValue='No Title'}" TextWrapping="Wrap"
+           FontSize="16 " FontFamily="Helvetica Lt Std" FontWeight="Bold" Foreground="Black"/>
+            <TextBlock Grid.Row="1" HorizontalAlignment="Left" Text="{Binding Description, FallbackValue='No Description'}" TextWrapping="Wrap"
+           FontSize="13" FontFamily="Helvetica Lt Std" FontWeight="Medium" Foreground="Black"/>
+        </Grid>
+    </Grid>
+
+</UserControl>

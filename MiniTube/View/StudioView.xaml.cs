@@ -2,13 +2,14 @@
 using MiniTube.ModelsEAD;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.IO;
 using Microsoft.EntityFrameworkCore;
+using System.Windows.Media.Imaging;
 
 namespace MiniTube.View
 {
@@ -17,7 +18,7 @@ namespace MiniTube.View
     /// </summary>
     public partial class StudioView : Window
     {
-        private int UserId; 
+        private int UserId;
 
         public StudioView()
         {
@@ -32,25 +33,41 @@ namespace MiniTube.View
             LoadVideos();
         }
 
-        
         private async void LoadVideos()
         {
-            using (var context = new Context.MiniTubeContext())
+            using (var context = new ModelsEAD.MiniTubeContext())
             {
                 try
                 {
-                    var videos = await Task.Run(() =>
-                        context.Videos.Select(v => new
+                    var videos = await context.Videos
+                        .Where(v => v.UserId == UserId) // Load only the videos of the current user
+                        .Select(v => new
                         {
                             v.VideoId,
                             v.Title,
                             v.Description,
                             v.LikesCount,
-                            v.ViewsCount,
-                            ThumbnailPath = SaveToTempFile(v.Thumbnail, "png") // Use helper method to save thumbnails
-                        }).ToListAsync());
+                            Thumbnail = ConvertToBitmapImage(v.Thumbnail) // v.Thumbnail should be byte[] type
+                        })
+                        .ToListAsync();
 
-                    videoDataGrid.ItemsSource = videos;
+                    // Check if the user has no uploaded videos
+                    if (videos.Count == 0)
+                    {
+                        MessageBox.Show("You have not uploaded any videos yet.");
+                    }
+
+                    foreach (var video in videos)
+                    {
+                        var studioControl = new StudioControl
+                        {
+                            VideoId = video.VideoId,
+                            DataContext = video
+                        };
+                        studioControl.Margin = new Thickness(0, 0, 0, 14.9661);
+                        studioControl.VideoClicked += StudioControl_VideoClicked;
+                        wrp_front.Children.Add(studioControl);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -58,25 +75,27 @@ namespace MiniTube.View
                 }
             }
         }
-
-        // Helper method to save byte[] data to a temporary file
-        static private string SaveToTempFile(byte[] data, string extension)
+        private static BitmapImage ConvertToBitmapImage(byte[] imageData)
         {
-            string tempPath = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.{extension}");
-            File.WriteAllBytes(tempPath, data);
-            return tempPath;
-        }
+            if (imageData == null) return null;
 
-        private void videoDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var selectedVideo = videoDataGrid.SelectedItem as dynamic;  // Cast as dynamic since we used anonymous types.
-            if (selectedVideo != null)
+            using (var ms = new MemoryStream(imageData))
             {
-                int videoId = selectedVideo.VideoId;
-                var insightView = new InsightView(UserId, videoId);
-                insightView.Show();
-                this.Close();
+                var bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.StreamSource = ms;
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapImage.EndInit();
+                bitmapImage.Freeze(); // Freeze the bitmap to make it cross-thread accessible
+                return bitmapImage;
             }
+        }
+        private void StudioControl_VideoClicked(object sender, int videoId)
+        {
+            // Handle the video click event, e.g., navigate to a video detail page
+            var insightView = new InsightView(UserId, videoId);
+            insightView.Show();
+            this.Close();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -105,11 +124,58 @@ namespace MiniTube.View
             }
         }
 
-        private void btn_search_Click(object sender, RoutedEventArgs e)
+        private async void btn_search_Click(object sender, RoutedEventArgs e)
         {
-            // Implement search functionality here.
-        }
+            string searchText = txt_search.Text.Trim();
+            if (string.IsNullOrEmpty(searchText))
+            {
+                LoadVideos(); // Load all videos if the search text is empty
+                return;
+            }
 
+            using (var context = new ModelsEAD.MiniTubeContext())
+            {
+                try
+                {
+                    var videos = await context.Videos
+                        .Where(v => v.UserId == UserId &&
+                                    (v.Title.Contains(searchText) ||
+                                     v.Keyword1.Contains(searchText) ||
+                                     v.Keyword2.Contains(searchText) ||
+                                     v.Keyword3.Contains(searchText)))
+                        .Select(v => new
+                        {
+                            v.VideoId,
+                            v.Title,
+                            v.Description,
+                            v.LikesCount,
+                            Thumbnail = ConvertToBitmapImage(v.Thumbnail)
+                        })
+                        .ToListAsync();
+                    DisplayVideos(videos);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error searching videos: {ex.Message}");
+                }
+            }
+        }
+        private void DisplayVideos(IEnumerable<dynamic> videos)
+        {
+            wrp_front.Children.Clear(); // Clear previous results
+
+            foreach (var video in videos)
+            {
+                var studioControl = new StudioControl
+                {
+                    VideoId = video.VideoId,
+                    DataContext = video
+                };
+                studioControl.Margin = new Thickness(0, 0, 0, 14.9661);
+                studioControl.VideoClicked += StudioControl_VideoClicked;
+                wrp_front.Children.Add(studioControl);
+            }
+        }
         private void btn_logout_Click(object sender, RoutedEventArgs e)
         {
             LoginViewIn loginViewIn = new LoginViewIn();
@@ -129,7 +195,7 @@ namespace MiniTube.View
             // Show uploading view and close this window after completion without blocking UI
             UploadingView uploadingView = new UploadingView(UserId);
             uploadingView.Show();
-            await Task.Delay(2000);  // Replaced Thread.Sleep with async Task.Delay
+            await Task.Delay(2000);  // Simulate upload delay
             this.Close();
         }
     }

@@ -1,5 +1,11 @@
-﻿using System.Windows;
+﻿using MiniTube.Context;
+using System;
+using System.IO;
+using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace MiniTube.View
 {
@@ -8,15 +14,74 @@ namespace MiniTube.View
     /// </summary>
     public partial class UserView : Window
     {
-        private int Id;
+        private int UserId=-1;
+
         public UserView()
         {
             InitializeComponent();
+            //ShowData();
         }
-        public UserView(int i)
+
+        public UserView(int id)
         {
             InitializeComponent();
-            Id = i;
+            UserId = id;
+            ShowData();
+        }
+
+        private void ShowData()
+        {
+            using (var dbContext = new MiniTubeContext())
+            {
+                // Fetch videos and randomize their order
+                var videos = dbContext.Videos
+                    .OrderBy(_ => Guid.NewGuid()) // Randomize order
+                    .Select(v => new
+                    {
+                        v.Title,
+                        v.Thumbnail,
+                        v.VideoId
+                    })
+                    .ToList();
+
+                // Clear existing controls in the WrapPanel
+                wrp_front.Children.Clear();
+
+                foreach (var video in videos)
+                {
+                    UserControl1 userControl = new UserControl1
+                    {
+                        VideoID = video.VideoId.ToString() // Set the VideoID explicitly
+                    };
+
+                    // Convert the thumbnail to a BitmapImage
+                    BitmapImage bitmapImage = null;
+                    if (video.Thumbnail != null)
+                    {
+                        using (MemoryStream ms = new MemoryStream(video.Thumbnail))
+                        {
+                            bitmapImage = new BitmapImage();
+                            bitmapImage.BeginInit();
+                            bitmapImage.StreamSource = ms;
+                            bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                            bitmapImage.EndInit();
+                        }
+                    }
+
+                    // Bind the data to the UserControl
+                    userControl.DataContext = new
+                    {
+                        Title = video.Title,
+                        ImagePath = bitmapImage
+                    };
+
+                    // Subscribe to the VideoClicked event
+                    userControl.VideoClicked += UserControl_VideoClicked;
+
+                    // Add the UserControl to the WrapPanel
+                    wrp_front.Children.Add(userControl);
+                }
+            }
         }
 
         private void btn_logout_Click(object sender, RoutedEventArgs e)
@@ -35,25 +100,119 @@ namespace MiniTube.View
         {
             Application.Current.Shutdown();
         }
+
         private void txt_search_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
                 btn_search_Click(sender, e);
             }
-
         }
 
         private void btn_search_Click(object sender, RoutedEventArgs e)
         {
+            string searchText = txt_search.Text.Trim(); // Get the search text
 
+            if (!string.IsNullOrEmpty(searchText))
+            {
+                using (var dbContext = new MiniTubeContext())
+                {
+                    // Search for videos where Title or Keywords match the search text
+                    var searchResults = dbContext.Videos
+                        .Where(v => v.Title.Contains(searchText) ||
+                                    v.Keyword1.Contains(searchText) ||
+                                    v.Keyword2.Contains(searchText) ||
+                                    v.Keyword3.Contains(searchText))
+                        .Select(v => new
+                        {
+                            v.Title,
+                            v.Thumbnail,
+                            v.VideoId
+                        })
+                        .ToList();
+
+                    // Clear the WrapPanel
+                    wrp_front.Children.Clear();
+
+                    // Add the search results to the WrapPanel
+                    foreach (var video in searchResults)
+                    {
+                        UserControl1 userControl = new UserControl1
+                        {
+                            VideoID = video.VideoId.ToString() // Set the VideoID explicitly
+                        };
+
+                        // Convert the thumbnail to a BitmapImage
+                        BitmapImage bitmapImage = null;
+                        if (video.Thumbnail != null)
+                        {
+                            using (MemoryStream ms = new MemoryStream(video.Thumbnail))
+                            {
+                                bitmapImage = new BitmapImage();
+                                bitmapImage.BeginInit();
+                                bitmapImage.StreamSource = ms;
+                                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                                bitmapImage.EndInit();
+                            }
+                        }
+
+                        // Bind the data to the UserControl
+                        userControl.DataContext = new
+                        {
+                            Title = video.Title,
+                            ImagePath = bitmapImage
+                        };
+
+                        // Subscribe to the VideoClicked event
+                        userControl.VideoClicked += UserControl_VideoClicked;
+
+                        // Add the UserControl to the WrapPanel
+                        wrp_front.Children.Add(userControl);
+                    }
+                }
+            }
+            else
+            {
+                wrp_front.Children.Clear();
+                ShowData();
+            }
         }
 
         private void btn_studio_Click(object sender, RoutedEventArgs e)
         {
-            StudioView studioView = new StudioView(Id);
+            StudioView studioView = new StudioView(UserId);
             studioView.Show();
             this.Close();
+        }
+
+        private void UserControl_VideoClicked(object sender, string videoID)
+        {
+            // Navigate to PlayerView with the VideoID
+            if (int.TryParse(videoID, out int parsedVideoID))
+            {
+                PlayerView playerView = new PlayerView(UserId, parsedVideoID);
+                playerView.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show($"Invalid VideoID: {videoID}");
+            }
+        }
+
+        private void txt_search_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchText = txt_search.Text.Trim(); // Get the search text
+
+            if (string.IsNullOrEmpty(searchText))
+            {
+                wrp_front.Children.Clear();
+                ShowData();
+            }
+            else
+            {
+                btn_search_Click(sender, e);
+            }
         }
     }
 }
