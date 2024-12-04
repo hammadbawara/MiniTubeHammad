@@ -112,7 +112,6 @@
                             <ColumnDefinition Width="16.118 "/>
                             <ColumnDefinition Width="Auto"/>
                             
-
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0" ShowGridLines="False" >
                             <Grid.RowDefinitions>
