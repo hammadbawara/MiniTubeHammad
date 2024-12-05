@@ -364,4 +364,5 @@ MigrationBackup/
 FodyWeavers.xsd
 
 MiniTube/obj/*
-/MiniTube
+MiniTube/bin/*
+MiniTube/.vs/*
