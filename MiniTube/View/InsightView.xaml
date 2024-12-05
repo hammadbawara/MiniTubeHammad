@@ -157,7 +157,7 @@
 
 
 
-                        <DataGrid Background="Transparent" CanUserAddRows="False" AutoGenerateColumns="False" Name="grid_insights" Margin="0,17,0,60" SelectionChanged="grid_insights_SelectionChanged" Grid.Row="1" Grid.RowSpan="2">
+                        <!--<DataGrid Background="Transparent" CanUserAddRows="False" AutoGenerateColumns="False" Name="grid_insights" Margin="0,17,0,60" SelectionChanged="grid_insights_SelectionChanged" Grid.Row="1" Grid.RowSpan="2">
 
                             <DataGrid.ColumnHeaderStyle>
                                 <Style TargetType="DataGridColumnHeader">
@@ -172,9 +172,34 @@
                                 <DataGridTextColumn  Binding="{Binding Comment}" Header="Comments" Width="*" FontFamily="Helvetica LT Std" FontWeight="Bold" FontSize="25.89 "></DataGridTextColumn>
                             </DataGrid.Columns>
 
-                        </DataGrid>
+                        </DataGrid>-->
 
-
+                        <TabControl Grid.Row="2" Margin="0,17,0,60">
+                            <TabItem Header="Likes">
+                                <DataGrid Name="LikesDataGrid" AutoGenerateColumns="False" CanUserAddRows="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding Username}" Header="User " Width="*"/>
+                                        <DataGridTextColumn Binding="{Binding LikedDate, StringFormat={}{0:MM/dd/yyyy}}" Header="Date" Width="*"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </TabItem>
+                            <TabItem Header="Comments">
+                                <DataGrid Name="CommentsDataGrid" AutoGenerateColumns="False" CanUserAddRows="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding Username}" Header="User " Width="*"/>
+                                        <DataGridTextColumn Binding="{Binding CommentText}" Header="Comment" Width="*"/>
+                                        <DataGridTextColumn Binding="{Binding CommentDate, StringFormat={}{0:MM/dd/yyyy}}" Header="Date" Width="*"/>
+                                        <DataGridTemplateColumn Header="Actions" Width="100">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button Content="Delete" Name="btn_delete_cmt" Click="btn_delete_cmt_Click" Tag="{Binding CommentId}"/>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </TabItem>
+                        </TabControl>
 
                     </Grid>
 

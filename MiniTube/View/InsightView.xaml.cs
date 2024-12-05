@@ -37,18 +37,16 @@ namespace MiniTube.View
             {
                 try
                 {
-                   
                     var video = await context.Videos.FirstOrDefaultAsync(x => x.VideoId == videoId);
                     if (video != null)
                     {
                         txt_title.Text = video.Title;
                         txt_des.Text = video.Description;
 
-                        
-                        if (video.Thumbnail != null) 
+                        if (video.Thumbnail != null)
                         {
                             tempThumbnailPath = SaveToTempFile(video.Thumbnail, "png");
-                            thumb.Source = new BitmapImage(new Uri(tempThumbnailPath)); 
+                            thumb.Source = new BitmapImage(new Uri(tempThumbnailPath));
                         }
                         else
                         {
@@ -61,29 +59,27 @@ namespace MiniTube.View
                         return;
                     }
 
-
-                    var likes = context.Likes
-                .Where(like => like.VideoId == videoId)
-                .Select(like => new
-                {
-                    Username = like.User.Username,
-                    Comment = (string?)null // No comment for likes-only rows
-                }).ToList();
-
+                    // Fetch likes for the video
+                    var likes = await context.Likes
+                            .Where(like => like.VideoId == videoId)
+                            .Select(like => new
+                            {
+                                Username = like.User.Username,
+                                LikedDate = like.LikedDate // Use the LikedDate property from the Like model
+                            }).ToListAsync();
                     // Fetch comments for the video
-                    var comments = context.Comments
+                    var comments = await context.Comments
                         .Where(comment => comment.VideoId == videoId)
                         .Select(comment => new
                         {
                             Username = comment.User.Username,
-                            Comment = comment.CommentText
-                        }).ToList();
+                            CommentText = comment.CommentText,
+                            CommentDate = comment.CommentDate // Use the CommentDate property from the Comment model
+                        }).ToListAsync();
 
-                    // Combine likes and comments into one collection
-                    var likesAndComments = likes.Union(comments).ToList();
-
-                    // Bind the combined data to the DataGrid
-                    grid_insights.ItemsSource = likesAndComments;
+                    // Bind the likes and comments to their respective DataGrids
+                    LikesDataGrid.ItemsSource = likes;
+                    CommentsDataGrid.ItemsSource = comments;
                 }
                 catch (Exception ex)
                 {
@@ -91,7 +87,6 @@ namespace MiniTube.View
                 }
             }
         }
-
         private static string SaveToTempFile(byte[] data, string extension)
         {
             if (data == null)
@@ -145,6 +140,79 @@ namespace MiniTube.View
         private void grid_insights_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // Event handler for grid selection change
+        }
+
+
+        private async Task LoadComments(int videoId)
+        {
+            using (var context = new MiniTubeContext())
+            {
+                var comments = await context.Comments
+                    .Where(comment => comment.VideoId == videoId)
+                    .Select(comment => new
+                    {
+                        CommentId = comment.CommentId, // Ensure CommentId is included
+                        Username = comment.User.Username,
+                        CommentText = comment.CommentText,
+                        CommentDate = comment.CommentDate
+                    }).ToListAsync();
+
+                CommentsDataGrid.ItemsSource = comments;
+            }
+        }
+        private async void btn_delete_cmt_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // Get the button that was clicked
+                Button deleteButton = sender as Button;
+                if (deleteButton != null)
+                {
+                    // Check the Tag property
+                    if (deleteButton.Tag != null)
+                    {
+                        // Get the CommentId from the Tag property
+                        if (deleteButton.Tag is int commentId)
+                        {
+                            MessageBox.Show($"Attempting to delete comment with ID: {commentId}"); // Debugging line
+                            using (var context = new MiniTubeContext())
+                            {
+                                // Find the comment in the database
+                                var commentToDelete = await context.Comments.FindAsync(commentId);
+                                if (commentToDelete != null)
+                                {
+                                    // Remove the comment from the context
+                                    context.Comments.Remove(commentToDelete);
+                                    await context.SaveChangesAsync();
+
+                                    // Refresh the comments DataGrid
+                                    await LoadComments(Id); // Use the Id field to load comments for the current video
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Comment not found.");
+                                }
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid comment ID.");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tag is null.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalid button.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error deleting comment: {ex.Message}");
+            }
         }
     }
 }

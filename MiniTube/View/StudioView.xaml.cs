@@ -40,18 +40,18 @@ namespace MiniTube.View
                 try
                 {
                     var videos = await context.Videos
-                        .Where(v => v.UserId == UserId) // Load only the videos of the current user
+                        .Where(v => v.UserId == UserId)
                         .Select(v => new
                         {
                             v.VideoId,
                             v.Title,
                             v.Description,
                             v.LikesCount,
-                            Thumbnail = ConvertToBitmapImage(v.Thumbnail) // v.Thumbnail should be byte[] type
+                            v.CommentsCount, // Include CommentsCount
+                            Thumbnail = ConvertToBitmapImage(v.Thumbnail)
                         })
                         .ToListAsync();
 
-                    // Check if the user has no uploaded videos
                     if (videos.Count == 0)
                     {
                         MessageBox.Show("You have not uploaded any videos yet.");
