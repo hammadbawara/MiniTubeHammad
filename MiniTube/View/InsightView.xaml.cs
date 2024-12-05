@@ -72,11 +72,11 @@ namespace MiniTube.View
                         .Where(comment => comment.VideoId == videoId)
                         .Select(comment => new
                         {
+                            CommentId = comment.CommentId, // Ensure CommentId is included
                             Username = comment.User.Username,
                             CommentText = comment.CommentText,
                             CommentDate = comment.CommentDate // Use the CommentDate property from the Comment model
                         }).ToListAsync();
-
                     // Bind the likes and comments to their respective DataGrids
                     LikesDataGrid.ItemsSource = likes;
                     CommentsDataGrid.ItemsSource = comments;
@@ -174,7 +174,6 @@ namespace MiniTube.View
                         // Get the CommentId from the Tag property
                         if (deleteButton.Tag is int commentId)
                         {
-                            MessageBox.Show($"Attempting to delete comment with ID: {commentId}"); // Debugging line
                             using (var context = new MiniTubeContext())
                             {
                                 // Find the comment in the database
@@ -187,6 +186,7 @@ namespace MiniTube.View
 
                                     // Refresh the comments DataGrid
                                     await LoadComments(Id); // Use the Id field to load comments for the current video
+                                    MessageBox.Show("Comment Deleted"); // Debugging line
                                 }
                                 else
                                 {
