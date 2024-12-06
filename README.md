@@ -37,6 +37,73 @@ MiniTube is a WPF application designed to provide a seamless experience for brow
 
 ## Installation  
 
+### Prerequisites  
+
+1. **Database Setup**:  
+
+   - Create the required database tables using the following SQL script:  
+
+   ```sql  
+   CREATE TABLE [dbo].[Users] (  
+       [User ID] INT IDENTITY(1, 1) NOT NULL,  
+       [Username] VARCHAR(255) NOT NULL,  
+       [Email] VARCHAR(255) NOT NULL,  
+       [Password] VARCHAR(255) NOT NULL,  
+       [Role] VARCHAR(50) NOT NULL,  
+       PRIMARY KEY CLUSTERED ([User ID] ASC)  
+   );  
+
+   CREATE TABLE [dbo].[Videos] (  
+       [VideoID] INT IDENTITY(1, 1) NOT NULL,  
+       [User ID] INT NOT NULL,  
+       [Title] VARCHAR(255) NOT NULL,  
+       [Description] TEXT NULL,  
+       [Thumbnail] VARBINARY(MAX) NULL,  
+       [VideoFile] VARBINARY(MAX) NULL,  
+       [Keyword1] VARCHAR(100) NULL,  
+       [Keyword2] VARCHAR(100) NULL,  
+       [Keyword3] VARCHAR(100) NULL,  
+       [UploadDate] DATETIME DEFAULT GETDATE() NULL,  
+       [CommentsCount] INT DEFAULT 0 NULL,  
+       [LikesCount] INT DEFAULT 0 NULL,  
+       PRIMARY KEY CLUSTERED ([VideoID] ASC),  
+       FOREIGN KEY ([User ID]) REFERENCES [dbo].[Users] ([User ID])  
+   );  
+
+   CREATE TABLE [dbo].[Comments] (  
+       [CommentID] INT IDENTITY(1, 1) NOT NULL,  
+       [VideoID] INT NOT NULL,  
+       [User ID] INT NOT NULL,  
+       [CommentText] TEXT NULL,  
+       [CommentDate] DATETIME DEFAULT GETDATE() NULL,  
+       PRIMARY KEY CLUSTERED ([CommentID] ASC),  
+       FOREIGN KEY ([User ID]) REFERENCES [dbo].[Users] ([User ID]),  
+       FOREIGN KEY ([VideoID]) REFERENCES [dbo].[Videos] ([VideoID])  
+   );  
+
+   CREATE TABLE [dbo].[Likes] (  
+       [LikeID] INT IDENTITY(1, 1) NOT NULL,  
+       [User ID] INT NOT NULL,  
+       [VideoID] INT NOT NULL,  
+       [LikedDate] DATETIME DEFAULT GETDATE() NULL,  
+       PRIMARY KEY CLUSTERED ([LikeID] ASC),  
+       FOREIGN KEY ([User ID]) REFERENCES [dbo].[Users] ([User ID]),  
+       FOREIGN KEY ([VideoID]) REFERENCES [dbo].[Videos] ([VideoID])  
+   );  
+   ```  
+
+2. **Scaffold the Database Context**:  
+
+   - Use the following command to scaffold the Entity Framework Core DbContext:  
+     ```bash  
+     Scaffold-DbContext 'Server=YOUR_SERVER_NAME;Database=MiniTube;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False' Microsoft.EntityFrameworkCore.SqlServer -OutputDir ModelsEAD -Force  
+     ```  
+   - Replace `YOUR_SERVER_NAME` with your SQL Server instance (e.g., `DESKTOP-I6UBJ5U\SQLEXPRESS`).  
+
+---
+
+### Steps  
+
 1. **Clone the Repository**:  
     ```bash  
     git clone https://github.com/MalikShujaatAli/MiniTube.git  
@@ -105,4 +172,3 @@ Contributions are welcome! To contribute:
 - Thanks to the contributors and the community for their valuable feedback.  
 - Special thanks to the tools and frameworks that made this project possible.  
 
---- 
