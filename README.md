@@ -1,57 +1,110 @@
+---
+
 # MiniTube  
 
-MiniTube is a WPF application that allows users to browse, search, and view videos. It provides a user-friendly interface for interacting with video content, featuring options for searching, browsing, and navigating to different views.  
+## Overview  
+
+MiniTube is a WPF application designed to provide a seamless experience for browsing, searching, and viewing videos. With features such as personalized content, search functionality, and a dedicated studio view, MiniTube aims to simplify video interaction while maintaining a user-friendly interface.  
+
+---
 
 ## Features  
 
-- **User Authentication**: Log in to access personalized video content.  
-- **Video Browsing**: View a randomized list of videos.  
-- **Search Functionality**: Search for videos by title or keywords.  
-- **Video Playback**: Click on videos to navigate to a dedicated player view.  
-- **Studio View**: Access a studio view to upload and manage your videos.  
+### Application Structure  
+
+- **Main Entry Point**:  
+  - The application starts with the `App.xaml` and `App.xaml.cs` files, setting up the app's lifecycle and resources.  
+
+- **MiniTube App Core**:  
+  - The app includes modules for user interaction, video playback, and video management.  
+
+### Core Features  
+
+- **User Authentication**:  
+  - Log in to access personalized video recommendations.  
+
+- **Video Browsing**:  
+  - Explore a randomized list of videos on the main screen.  
+
+- **Search Functionality**:  
+  - Find videos by entering titles or keywords in the search bar.  
+
+- **Video Playback**:  
+  - Click on a video to open a dedicated playback screen with essential controls.  
+
+- **Studio View**:  
+  - Upload and manage your videos in the studio view.  
 
 ---
 
 ## Installation  
 
-1. Clone the repository:  
-   ```bash  
-   git clone https://github.com/MalikShujaatAli/MiniTube.git  
-   ```  
-2. Open the solution in Visual Studio.  
-3. Restore the NuGet packages.  
-4. Build the solution.  
-5. Run the application.  
+1. **Clone the Repository**:  
+    ```bash  
+    git clone https://github.com/MalikShujaatAli/MiniTube.git  
+    ```  
+
+2. **Open the Solution**:  
+   - Launch the project in Visual Studio.  
+
+3. **Restore Dependencies**:  
+   - Use NuGet to restore all required packages.  
+
+4. **Build the Solution**:  
+   - Ensure the solution builds without errors.  
+
+5. **Run the Application**:  
+   - Start the app to explore its functionality.  
 
 ---
 
 ## Usage  
 
-1. Launch the application.  
-2. Log in with your credentials.  
-3. Browse video content or use the search bar to find specific videos.  
-4. Click on a video to play it, or navigate to the studio view to manage your uploads.  
+1. **Launch the Application**:  
+   - Open MiniTube and log in using your credentials.  
+
+2. **Browse Video Content**:  
+   - Explore the home screen for a curated list of videos.  
+
+3. **Search for Videos**:  
+   - Use the search bar to find specific videos by title or keyword.  
+
+4. **Play Videos**:  
+   - Select a video to navigate to its playback screen.  
+
+5. **Access the Studio View**:  
+   - Upload and manage your videos in the dedicated studio interface.  
 
 ---
 
 ## Code Structure  
 
-- **View**: Contains the WPF windows and user controls.  
-- **Model**: Represents the data structure and database context.  
-- **ViewModel**: (If implemented) Manages data binding and interaction between the view and model.  
+- **View**:  
+  - Contains WPF windows and user controls for UI presentation.  
+
+- **Model**:  
+  - Defines the data structure and manages interactions with the database context.  
+
+- **ViewModel** (if implemented):  
+  - Acts as the bridge between the view and model, handling data binding and business logic.  
 
 ---
 
 ## Contributing  
 
-Contributions are welcome! Please fork the repository, make your changes, and submit a pull request.    
+Contributions are welcome! To contribute:  
+
+1. **Fork the Repository**.  
+2. **Create a Feature Branch**.  
+3. **Commit Your Changes**.  
+4. **Push to Your Branch**.  
+5. **Create a Pull Request**.  
 
 ---
 
 ## Acknowledgments  
 
-- Thanks to all contributors and the community for their support and feedback.  
-- Special thanks to the libraries and frameworks that made this project possible.  
+- Thanks to the contributors and the community for their valuable feedback.  
+- Special thanks to the tools and frameworks that made this project possible.  
 
 --- 
-
