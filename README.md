@@ -44,13 +44,7 @@ MiniTube is a WPF application that allows users to browse, search, and view vide
 
 ## Contributing  
 
-Contributions are welcome! Please fork the repository, make your changes, and submit a pull request.  
-
----
-
-## License  
-
-This project is licensed under the [MIT License](LICENSE).  
+Contributions are welcome! Please fork the repository, make your changes, and submit a pull request.    
 
 ---
 
