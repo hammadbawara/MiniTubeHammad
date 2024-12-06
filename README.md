@@ -83,7 +83,7 @@ MiniTube is a WPF application designed to provide a seamless experience for brow
 - **Model**:  
   - Defines the data structure and manages interactions with the database context.  
 
-- **ViewModel** (if implemented):  
+- **ViewModel**:  
   - Acts as the bridge between the view and model, handling data binding and business logic.  
 
 ---
