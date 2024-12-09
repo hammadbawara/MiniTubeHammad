@@ -14,6 +14,7 @@ namespace MiniTube.View
 {
     /// <summary>
     /// Interaction logic for PlayerView.xaml
+    /// Provides a user interface for video playback, comments, and related videos.
     /// </summary>
     public partial class PlayerView : Window
     {
@@ -21,6 +22,7 @@ namespace MiniTube.View
         private int VideoId;
         private bool isFullscreen = false;
         private bool isLiked = false; // Track if the user has liked the video
+        private string tempFilePath; // Temporary file path for the video
 
         public PlayerView()
         {
@@ -36,15 +38,9 @@ namespace MiniTube.View
             LoadRelatedVideos();
             btn_pause.Visibility = Visibility.Visible;
             btn_play.Visibility = Visibility.Hidden;
-           
         }
 
-
-
-
-        /// <summary>
-        /// Load video details (title, description, and video content) based on VideoId.
-        /// </summary>
+        // ----- Load video details (title, description, and video content) based on VideoId -----
         private void LoadVideoDetails()
         {
             using (var dbContext = new MiniTubeContext())
@@ -63,10 +59,10 @@ namespace MiniTube.View
                         try
                         {
                             // Save the video file to a temporary path
-                            string tempFilePath = System.IO.Path.Combine(System.IO.Path.GetTempPath(), $"{video.VideoId}.mp4");
+                            tempFilePath = Path.Combine(Path.GetTempPath(), $"{video.VideoId}.mp4");
 
                             // Write the video data to the temporary file
-                            System.IO.File.WriteAllBytes(tempFilePath, video.VideoFile);
+                            File.WriteAllBytes(tempFilePath, video.VideoFile);
 
                             // Set the media player's source to the temporary file
                             media_video.Source = new Uri(tempFilePath, UriKind.Absolute);
@@ -101,9 +97,8 @@ namespace MiniTube.View
                 }
             }
         }
-        /// <summary>
-        /// Load related videos into the WrapPanel.
-        /// </summary>
+
+        // ----- Load related videos into the WrapPanel -----
         private void LoadRelatedVideos()
         {
             using (var dbContext = new MiniTubeContext())
@@ -111,7 +106,6 @@ namespace MiniTube.View
                 var relatedVideos = dbContext.Videos
                     .Where(v => v.VideoId != VideoId) // Exclude the current video
                     .OrderBy(_ => Guid.NewGuid())    // Randomize
-                                          // Limit the number of related videos
                     .Select(v => new
                     {
                         v.Title,
@@ -154,15 +148,13 @@ namespace MiniTube.View
             }
         }
 
-        /// <summary>
-        /// Helper method to convert byte array to BitmapImage.
-        /// </summary>
+        // ----- Helper method to convert byte array to BitmapImage -----
         private BitmapImage ConvertToBitmapImage(byte[] imageData)
         {
             if (imageData == null || imageData.Length == 0)
                 return null;
 
-            using (var stream = new System.IO.MemoryStream(imageData))
+            using (var stream = new MemoryStream(imageData))
             {
                 BitmapImage bitmapImage = new BitmapImage();
                 bitmapImage.BeginInit();
@@ -173,7 +165,7 @@ namespace MiniTube.View
             }
         }
 
-
+        // ----- Play button click event handler -----
         private void btn_play_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -183,7 +175,6 @@ namespace MiniTube.View
                     btn_play.Visibility = Visibility.Hidden;
                     btn_pause.Visibility = Visibility.Visible;
                     media_video.Play();
-
                 }
                 else
                 {
@@ -196,14 +187,21 @@ namespace MiniTube.View
             }
         }
 
+        // ----- Stop the current video -----
         private void StopCurrentVideo()
         {
             if (media_video.Source != null)
             {
                 media_video.Stop();
                 media_video.Source = null; // Dispose of the current video source
+                if (File.Exists(tempFilePath))
+                {
+                    File.Delete(tempFilePath); // Clean up the temporary file
+                }
             }
         }
+
+        // ----- Pause button click event handler -----
         private void btn_pause_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -225,6 +223,7 @@ namespace MiniTube.View
             }
         }
 
+        // ----- Like button click event handler -----
         private void like_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             try
@@ -261,7 +260,6 @@ namespace MiniTube.View
             }
             catch (DbUpdateException dbEx)
             {
-                // Log the inner exception for more details
                 MessageBox.Show($"Database update error: {dbEx.InnerException?.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (Exception ex)
@@ -270,6 +268,7 @@ namespace MiniTube.View
             }
         }
 
+        // ----- Update the like button image based on the like state -----
         private void UpdateLikeImage()
         {
             if (isLiked)
@@ -282,6 +281,7 @@ namespace MiniTube.View
             }
         }
 
+        // ----- Comment button click event handler -----
         private void btn_cmt_Click(object sender, RoutedEventArgs e)
         {
             string commentText = txt_cmt.Text.Trim();
@@ -312,7 +312,7 @@ namespace MiniTube.View
             }
         }
 
-     
+        // ----- Search text box key down event handler -----
         private void txt_search_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -321,6 +321,7 @@ namespace MiniTube.View
             }
         }
 
+        // ----- Search button click event handler -----
         private void btn_search_Click(object sender, RoutedEventArgs e)
         {
             string searchText = txt_search.Text.Trim();
@@ -376,16 +377,16 @@ namespace MiniTube.View
 
                         wrp_suggestions.Children.Add(pc);
                     }
-
-                   
                 }
             }
             else
             {
                 wrp_suggestions.Children.Clear();
-                LoadRelatedVideos(); // Implement this method to load all videos as in your original logic
+                LoadRelatedVideos(); // Load related videos when the search box is empty
             }
         }
+
+        // ----- Handle video click event from PlayerControl -----
         private void UserControl_VideoClicked(object sender, string videoId)
         {
             StopCurrentVideo(); // Stop the current video before loading a new one
@@ -394,9 +395,9 @@ namespace MiniTube.View
             this.Close();
         }
 
+        // ----- Back button click event handler -----
         private void btn_back_Click(object sender, RoutedEventArgs e)
         {
-
             StopCurrentVideo();
 
             // Navigate back to the UserView
@@ -407,33 +408,30 @@ namespace MiniTube.View
             Close();
         }
 
+        // ----- Minimize button click event handler -----
         private void btn_minimize_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
         }
 
+        // ----- Close button click event handler -----
         private void btn_close_Click(object sender, RoutedEventArgs e)
         {
-            string tempFilePath = System.IO.Path.Combine(System.IO.Path.GetTempPath(), $"{VideoId}.mp4");
-            if (System.IO.File.Exists(tempFilePath))
-            {
-                System.IO.File.Delete(tempFilePath);
-            }
+            StopCurrentVideo(); // Ensure the current video is stopped
             Application.Current.Shutdown();
         }
 
+        // ----- Comment text box key down event handler -----
         private void txt_cmt_KeyDown(object sender, KeyEventArgs e)
         {
-            // Check if the Enter key was pressed
             if (e.Key == Key.Enter)
             {
-                // Prevent the default behavior of the Enter key
-                e.Handled = true;
-
-                // Call the method to add the comment
-                btn_cmt_Click(sender, e);
+                e.Handled = true; // Prevent the default behavior of the Enter key
+                btn_cmt_Click(sender, e); // Call the method to add the comment
             }
         }
+
+        // ----- Stop button click event handler -----
         private void btn_stop_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -443,12 +441,10 @@ namespace MiniTube.View
                     media_video.Stop();
                     btn_pause.Visibility = Visibility.Hidden;
                     btn_play.Visibility = Visibility.Visible;
-
                 }
                 else
                 {
-                    MessageBox.Show("Video source is not set.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
-                }
+                    MessageBox.Show("Video source is not set.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning); }
             }
             catch (Exception ex)
             {
@@ -456,6 +452,7 @@ namespace MiniTube.View
             }
         }
 
+        // ----- Window key down event handler for fullscreen toggle -----
         private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.F) // Check if the 'F' key was pressed
@@ -468,6 +465,7 @@ namespace MiniTube.View
             }
         }
 
+        // ----- Toggle fullscreen mode -----
         private void ToggleFullscreen()
         {
             try
@@ -487,11 +485,11 @@ namespace MiniTube.View
             }
         }
 
+        // ----- Enter fullscreen mode -----
         private void EnterFullscreen()
         {
             try
             {
-                // Save the current window state and position
                 this.WindowState = WindowState.Normal; // Ensure the window is not minimized
                 this.ResizeMode = ResizeMode.NoResize; // Prevent resizing while in fullscreen
                 this.WindowStyle = WindowStyle.None; // Remove window borders and title bar
@@ -512,12 +510,12 @@ namespace MiniTube.View
             }
         }
 
+        // ----- Exit fullscreen mode -----
         private void ExitFullscreen()
         {
             try
             {
-                // Restore the previous window style and size
-                this.WindowStyle = WindowStyle.None; // Keep it None as AllowsTransparency is true
+                this.WindowStyle = WindowStyle.SingleBorderWindow; // Restore window style
                 this.ResizeMode = ResizeMode.CanResize; // Allow resizing
                 this.Topmost = false; // Allow other windows to be on top
 
@@ -537,6 +535,7 @@ namespace MiniTube.View
             }
         }
 
+        // ----- Search text changed event handler -----
         private void txt_search_TextChanged(object sender, TextChangedEventArgs e)
         {
             string searchText = txt_search.Text.Trim(); // Get the search text
@@ -548,11 +547,8 @@ namespace MiniTube.View
             }
             else
             {
-                // Call the existing search method
-                btn_search_Click(sender, e);
+                btn_search_Click(sender, e); // Call the existing search method
             }
         }
-
-     
     }
 }

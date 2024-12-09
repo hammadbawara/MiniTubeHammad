@@ -1,19 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using MiniTube.ModelsEAD;
+using System;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using MiniTube.ModelsEAD;
-
 
 namespace MiniTube.View
 {
@@ -22,117 +11,118 @@ namespace MiniTube.View
     /// </summary>
     public partial class ResetView : Window
     {
+        // ----- Constructor -----
         public ResetView()
         {
             InitializeComponent();
         }
 
-        private void txt_confirm_password_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                btn_reset_Click(sender, e);
-            }
-
-        }
+        // ----- Mouse Down Event for Dragging the Window -----
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 DragMove();
             }
-
         }
+
+        // ----- Minimize Button Click -----
         private void btn_minimize_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
         }
 
+        // ----- Close Button Click -----
         private void btn_close_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
-        private void txt_password_KeyDown(object sender, KeyEventArgs e)
+
+        // ----- Key Down Event for Text Boxes -----
+        private void txt_email_KeyDown(object sender, KeyEventArgs e) => HandleEnterKey(e);
+        private void txt_password_KeyDown(object sender, KeyEventArgs e) => HandleEnterKey(e);
+        private void txt_confirm_password_KeyDown(object sender, KeyEventArgs e) => HandleEnterKey(e);
+
+        // ----- Handle Enter Key Press -----
+        private void HandleEnterKey(KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
-                btn_reset_Click(sender, e);
+                btn_reset_Click(this, new RoutedEventArgs());
             }
         }
 
-        private void txt_email_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                btn_reset_Click(sender, e);
-            }
-        }
-
-        static bool email_vlaidity(string mailAddress)
+        // ----- Email Validity Check -----
+        static bool EmailValidity(string mailAddress)
         {
             return Regex.IsMatch(mailAddress, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
         }
 
+        // ----- Reset Button Click -----
         private void btn_reset_Click(object sender, RoutedEventArgs e)
         {
-           if(txt_email.Text!="" && txt_password.Password!="" && txt_confirm_password.Password!="")
+            // ----- Validate Input -----
+            if (string.IsNullOrWhiteSpace(txt_email.Text) ||
+                string.IsNullOrWhiteSpace(txt_password.Password) ||
+                string.IsNullOrWhiteSpace(txt_confirm_password.Password))
             {
-                if (email_vlaidity(txt_email.Text))
+                ShowError("Fill every box");
+                return;
+            }
+
+            if (!EmailValidity(txt_email.Text))
+            {
+                ShowError("Email is invalid");
+                return;
+            }
+
+            if (txt_password.Password != txt_confirm_password.Password)
+            {
+                ShowError("Passwords don't match");
+                return;
+            }
+
+            // ----- Reset Password -----
+            try
+            {
+                using (var context = new MiniTubeContext())
                 {
-                    if (txt_password.Password == txt_confirm_password.Password)
+                    User? user = context.Users.FirstOrDefault(x => x.Email == txt_email.Text);
+                    if (user != null)
                     {
-                        using(var context=new MiniTubeContext() )
-                        {
-                            User? obj=context.Users.FirstOrDefault(x=>x.Email==txt_email.Text);
-                            if (obj != null)
-                            {
-                                obj.Password= txt_password.Password;
-                                context.SaveChanges();
-                                LoginViewIn loginViewIn = new LoginViewIn("Password is reset");    
-                                loginViewIn.Show();
-                                this.Close();
-                            }
-                            else
-                            {
-                                System.Windows.Media.Brush brush = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Red);
-                                txt_error.Foreground = brush;
-                                txt_error.TextAlignment = TextAlignment.Center;
-                                txt_error.Text = "User not found";
-                            }
-                        }
+                        user.Password = txt_password.Password;
+                        context.SaveChanges();
+
+                        LoginViewIn loginViewIn = new LoginViewIn("Password is reset");
+                        loginViewIn.Show();
+                        this.Close();
                     }
                     else
                     {
-                        System.Windows.Media.Brush brush = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Red);
-                        txt_error.Foreground = brush;
-                        txt_error.TextAlignment = TextAlignment.Center;
-                        txt_error.Text = "Passwords don't match";
+                        ShowError("User  not found");
                     }
                 }
-                else
-                {
-                    System.Windows.Media.Brush brush = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Red);
-                    txt_error.Foreground = brush;
-                    txt_error.TextAlignment = TextAlignment.Center;
-                    txt_error.Text = "Email is invalid";
-                }
-
             }
-           else
+            catch (Exception ex)
             {
-                System.Windows.Media.Brush brush = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Red);
-                txt_error.Foreground = brush;
-                txt_error.TextAlignment = TextAlignment.Center;
-                txt_error.Text = "Fill every box";
+                ShowError($"Error resetting password: {ex.Message}");
             }
         }
 
+        // ----- Show Error Message -----
+        private void ShowError(string message)
+        {
+            txt_error.Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Red);
+            txt_error.TextAlignment = TextAlignment.Center;
+            txt_error.Text = message;
+        }
+
+        // ----- Back Button Click -----
         private void btn_back_Click(object sender, RoutedEventArgs e)
         {
             LoginViewIn loginViewIn = new LoginViewIn();
             loginViewIn.Show();
             this.Close();
-
         }
     }
 }

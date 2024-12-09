@@ -2,163 +2,152 @@
 using System;
 using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Input; 
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.Windows.Input;
 
 namespace MiniTube.View
 {
     public partial class RegisterationViewIn : Window
     {
         private string? person;
+
+        // ----- Constructor -----
         public RegisterationViewIn()
         {
             InitializeComponent();
-            
-
         }
+
         public RegisterationViewIn(string s)
         {
             InitializeComponent();
             person = s;
         }
+
+        // ----- Mouse Down Event for Dragging the Window -----
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 DragMove();
             }
-
         }
 
+        // ----- Minimize Button Click -----
         private void btn_minimize_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
         }
 
+        // ----- Close Button Click -----
         private void btn_close_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
-        private void txt_username_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                btn_register_Click(sender, e);
-            }
 
-        }
+        // ----- Key Down Event for Text Boxes -----
+        private void txt_username_KeyDown(object sender, KeyEventArgs e) => HandleEnterKey(e);
+        private void txt_password_KeyDown(object sender, KeyEventArgs e) => HandleEnterKey(e);
+        private void txt_confirm_password_KeyDown(object sender, KeyEventArgs e) => HandleEnterKey(e);
+        private void txt_email_KeyDown(object sender, KeyEventArgs e) => HandleEnterKey(e);
 
-        private void txt_password_KeyDown(object sender, KeyEventArgs e)
+        // ----- Handle Enter Key Press -----
+        private void HandleEnterKey(KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
-                btn_register_Click(sender, e);
-            }
-        }
-        private void txt_confirm_password_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                btn_register_Click(sender, e);
-            }
-        }
-        private void txt_email_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                btn_register_Click(sender, e);
+                btn_register_Click(this, new RoutedEventArgs());
             }
         }
 
+        // ----- Back Button Click -----
         private void btn_back_Click(object sender, RoutedEventArgs e)
         {
-            RegisterationView registerationView = new RegisterationView();
-            registerationView.Show();
-            this.Close();
+            try
+            {
+                RegisterationView registerationView = new RegisterationView();
+                registerationView.Show();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error navigating back: {ex.Message}");
+            }
         }
-        static bool email_vlaidity(string mailAddress)
+
+        // ----- Email Validity Check -----
+        static bool EmailValidity(string mailAddress)
         {
             return Regex.IsMatch(mailAddress, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
         }
 
+        // ----- Register Button Click -----
         private void btn_register_Click(object sender, RoutedEventArgs e)
         {
-            string email=txt_email.Text;
-            string uname=txt_username.Text;
-            string pass=txt_password.Password;
-            string cpass= txt_confirm_password.Password;
+            string email = txt_email.Text;
+            string uname = txt_username.Text;
+            string pass = txt_password.Password;
+            string cpass = txt_confirm_password.Password;
 
-            if (txt_confirm_password.Password != "" && txt_password.Password != "" && txt_email.Text != "" && txt_username.Text != "")
+            // ----- Validate Input -----
+            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(uname) ||
+                string.IsNullOrWhiteSpace(pass) || string.IsNullOrWhiteSpace(cpass))
             {
-                if (email_vlaidity(email))
+                ShowError("Fill every box");
+                return;
+            }
+
+            if (!EmailValidity(email))
+            {
+                ShowError("Enter valid email");
+                return;
+            }
+
+            if (pass != cpass)
+            {
+                ShowError("Passwords don't match");
+                return;
+            }
+
+            // ----- Register User -----
+            try
+            {
+                using (var context = new MiniTubeContext())
                 {
-
-                    if (pass == cpass)
+                    User? existingUser = context.Users.FirstOrDefault(x => x.Email == email);
+                    if (existingUser == null)
                     {
-                        
-                        using(var context=new MiniTubeContext())
+                        User user = new User
                         {
-                            User? u= context.Users.FirstOrDefault(x=> x.Email==email && x.Password==pass);
-                            if (u == null)
-                            {
-                                User user = new User();
-                                user.Email = email;
-                                user.Username = uname;
-                                user.Password = pass;
-                                user.Role = "Viewer";
+                            Email = email,
+                            Username = uname,
+                            Password = pass,
+                            Role = "Viewer"
+                        };
 
-                                context.Users.Add(user);
-                                context.SaveChanges();
+                        context.Users.Add(user);
+                        context.SaveChanges();
 
-                                LoginViewIn loginViewIn = new LoginViewIn("Registeration Successful");
-                                loginViewIn.Show();
-                                this.Close();
-
-                            }
-                            else
-                            {
-                                System.Windows.Media.Brush brush = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Red);
-                                txt_error.Foreground = brush;
-                                txt_error.TextAlignment = TextAlignment.Center;
-                                txt_error.Text = "User already exists";
-                            }
-                            
-                        }
-
+                        LoginViewIn loginViewIn = new LoginViewIn("Registration Successful");
+                        loginViewIn.Show();
+                        this.Close();
                     }
                     else
                     {
-                        System.Windows.Media.Brush brush = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Red);
-                        txt_error.Foreground = brush;
-                        txt_error.TextAlignment = TextAlignment.Center;
-                        txt_error.Text = "Passwords don't match";
+                        ShowError("User  already exists");
                     }
                 }
-                else
-                {
-                    System.Windows.Media.Brush brush = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Red);
-                    txt_error.Foreground = brush;
-                    txt_error.TextAlignment = TextAlignment.Center;
-                    txt_error.Text = "Enter valid email";
-                }
             }
-            else
+            catch (Exception ex)
             {
-                System.Windows.Media.Brush brush = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Red);
-                txt_error.Foreground = brush;
-                txt_error.TextAlignment = TextAlignment.Center;
-                txt_error.Text = "Fill every box";
+                ShowError($"Registration failed: {ex.Message}");
             }
+        }
 
+        // ----- Show Error Message -----
+        private void ShowError(string message)
+        {
+            txt_error.Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Red);
+            txt_error.TextAlignment = TextAlignment.Center;
+            txt_error.Text = message;
         }
     }
 }

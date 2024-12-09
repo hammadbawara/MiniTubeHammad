@@ -1,52 +1,59 @@
 ﻿using MiniTube.ModelsEAD;
 using System;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.IO;
-using Microsoft.EntityFrameworkCore;
 using System.Windows.Media.Imaging;
-using System.Reflection.PortableExecutable; // Add this for BitmapImage
+using Microsoft.EntityFrameworkCore;
 
 namespace MiniTube.View
 {
+    /// <summary>
+    /// Interaction logic for InsightView.xaml
+    /// Displays insights for a specific video, including title, description, likes, and comments.
+    /// </summary>
     public partial class InsightView : Window
     {
-        private int Id;
-        private int uId;// Video ID for insights
-        private string? tempThumbnailPath; // Variable to hold thumbnail path (renamed to avoid ambiguity)
+        private int Id; // Video ID for insights
+        private int uId; // User ID
+        private string? tempThumbnailPath; // Variable to hold thumbnail path
 
+        // ----- Default constructor -----
         public InsightView()
         {
             InitializeComponent();
-
         }
 
-        public InsightView(int ui,int vi)
+        // ----- Constructor with parameters for User ID and Video ID -----
+        public InsightView(int ui, int vi)
         {
             InitializeComponent();
             Id = vi;
             uId = ui;
-            LoadInsights(vi);
+            LoadInsights(vi); // Load insights for the specified video 
         }
 
+        // ----- Asynchronously loads insights for the specified video ID -----
         private async void LoadInsights(int videoId)
         {
             using (var context = new MiniTubeContext())
             {
                 try
                 {
+                    // ----- Fetch video details -----
                     var video = await context.Videos.FirstOrDefaultAsync(x => x.VideoId == videoId);
                     if (video != null)
                     {
-                        txt_title.Text = video.Title;
-                        txt_des.Text = video.Description;
+                        txt_title.Text = video.Title; // Set title 
+                        txt_des.Text = video.Description; // Set description 
 
+                        // ----- Load thumbnail if available -----
                         if (video.Thumbnail != null)
                         {
                             tempThumbnailPath = SaveToTempFile(video.Thumbnail, "png");
-                            thumb.Source = new BitmapImage(new Uri(tempThumbnailPath));
+                            thumb.Source = new BitmapImage(new Uri(tempThumbnailPath)); // Set thumbnail source 
                         }
                         else
                         {
@@ -59,15 +66,16 @@ namespace MiniTube.View
                         return;
                     }
 
-                    // Fetch likes for the video
+                    // ----- Fetch likes for the video -----
                     var likes = await context.Likes
-                            .Where(like => like.VideoId == videoId)
-                            .Select(like => new
-                            {
-                                Username = like.User.Username,
-                                LikedDate = like.LikedDate // Use the LikedDate property from the Like model
-                            }).ToListAsync();
-                    // Fetch comments for the video
+                        .Where(like => like.VideoId == videoId)
+                        .Select(like => new
+                        {
+                            Username = like.User.Username,
+                            LikedDate = like.LikedDate // Use the LikedDate property from the Like model
+                        }).ToListAsync();
+
+                    // ----- Fetch comments for the video -----
                     var comments = await context.Comments
                         .Where(comment => comment.VideoId == videoId)
                         .Select(comment => new
@@ -77,16 +85,19 @@ namespace MiniTube.View
                             CommentText = comment.CommentText,
                             CommentDate = comment.CommentDate // Use the CommentDate property from the Comment model
                         }).ToListAsync();
-                    // Bind the likes and comments to their respective DataGrids
-                    LikesDataGrid.ItemsSource = likes;
-                    CommentsDataGrid.ItemsSource = comments;
+
+                    // ----- Bind the likes and comments to their respective DataGrids -----
+                    LikesDataGrid.ItemsSource = likes; // Bind likes 
+                    CommentsDataGrid.ItemsSource = comments; // Bind comments 
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error loading insights: {ex.Message}");
+                    MessageBox.Show($"Error loading insights: {ex.Message}"); // Handle exceptions 
                 }
             }
         }
+
+        // ----- Saves byte array data to a temporary file and returns the file path -----
         private static string SaveToTempFile(byte[] data, string extension)
         {
             if (data == null)
@@ -95,23 +106,38 @@ namespace MiniTube.View
             }
 
             string tempPath = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.{extension}");
-            File.WriteAllBytes(tempPath, data);
+            File.WriteAllBytes(tempPath, data); // Write data to temp file 
             return tempPath;
         }
 
+        // ----- Deletes the video and navigates back to the StudioView -----
         private void btn_delete_Click(object sender, RoutedEventArgs e)
         {
-            using(var db=new MiniTubeContext())
+            try
             {
-                Video? vid=db.Videos.FirstOrDefault(x=> x.VideoId==Id);
-                db.Videos.Remove(vid);
-                db.SaveChanges();
-                StudioView studioView = new StudioView(uId);
+                using (var db = new MiniTubeContext())
+                {
+                    Video? vid = db.Videos.FirstOrDefault(x => x.VideoId == Id);
+                    if (vid != null)
+                    {
+                        db.Videos.Remove(vid); // Remove video from context db.SaveChanges(); // Save changes to the database 
+                    }
+                    else
+                    {
+                        MessageBox.Show("Video not found."); // Handle case where video is not found
+                    }
+                }
+                StudioView studioView = new StudioView(uId); // Navigate back to StudioView
                 studioView.Show();
-                this.Close();
+                this.Close(); // Close the current window 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error deleting video: {ex.Message}"); // Handle exceptions 
             }
         }
 
+        // ----- Allows the window to be dragged -----
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -120,46 +146,66 @@ namespace MiniTube.View
             }
         }
 
+        // ----- Minimizes the window -----
         private void btn_minimize_Click(object sender, RoutedEventArgs e)
         {
-            WindowState = WindowState.Minimized;
+            WindowState = WindowState.Minimized; // Minimize the window
         }
 
+        // ----- Closes the application -----
         private void btn_close_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            Application.Current.Shutdown(); // Shutdown the application 
         }
 
+        // ----- Navigates back to the StudioView -----
         private void btn_back_Click(object sender, RoutedEventArgs e)
         {
-            StudioView studioView = new StudioView(uId); // Pass the UserId
-            studioView.Show();
-            this.Close();
+            try
+            {
+                StudioView studioView = new StudioView(uId); // Pass the UserId
+                studioView.Show(); // Show the StudioView
+                this.Close(); // Close the current window 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error navigating back: {ex.Message}"); // Handle exceptions 
+            }
         }
 
+        // ----- Event handler for grid selection change -----
         private void grid_insights_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // Event handler for grid selection change
+            // Currently not implemented 
         }
 
-
+        // ----- Asynchronously loads comments for the specified video ID -----
         private async Task LoadComments(int videoId)
         {
             using (var context = new MiniTubeContext())
             {
-                var comments = await context.Comments
-                    .Where(comment => comment.VideoId == videoId)
-                    .Select(comment => new
-                    {
-                        CommentId = comment.CommentId, // Ensure CommentId is included
-                        Username = comment.User.Username,
-                        CommentText = comment.CommentText,
-                        CommentDate = comment.CommentDate
-                    }).ToListAsync();
+                try
+                {
+                    var comments = await context.Comments
+                        .Where(comment => comment.VideoId == videoId)
+                        .Select(comment => new
+                        {
+                            CommentId = comment.CommentId, // Ensure CommentId is included
+                            Username = comment.User.Username,
+                            CommentText = comment.CommentText,
+                            CommentDate = comment.CommentDate
+                        }).ToListAsync();
 
-                CommentsDataGrid.ItemsSource = comments;
+                    CommentsDataGrid.ItemsSource = comments; // Bind comments to DataGrid 
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error loading comments: {ex.Message}"); // Handle exceptions 
+                }
             }
         }
+
+        // ----- Deletes a comment when the delete button is clicked -----
         private async void btn_delete_cmt_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -181,12 +227,12 @@ namespace MiniTube.View
                                 if (commentToDelete != null)
                                 {
                                     // Remove the comment from the context
-                                    context.Comments.Remove(commentToDelete);
-                                    await context.SaveChangesAsync();
+                                    context.Comments.Remove(commentToDelete); // Remove comment 
+                                    await context.SaveChangesAsync(); // Save changes asynchronously 
 
                                     // Refresh the comments DataGrid
-                                    await LoadComments(Id); // Use the Id field to load comments for the current video
-                                    MessageBox.Show("Comment Deleted"); // Debugging line
+                                    await LoadComments(Id); // Use the Id field to load comments for the current video 
+                                    MessageBox.Show("Comment Deleted"); // Notify user of deletion 
                                 }
                                 else
                                 {
@@ -211,7 +257,7 @@ namespace MiniTube.View
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error deleting comment: {ex.Message}");
+                MessageBox.Show($"Error deleting comment: {ex.Message}"); // Handle exceptions 
             }
         }
     }
