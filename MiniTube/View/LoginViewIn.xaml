@@ -8,39 +8,32 @@
         WindowStartupLocation="CenterScreen"
         Width="400"
         Height="600">
-    <Border BorderBrush="#9a06f0" BorderThickness="3">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+    
 
             <!-- Main Content -->
-            <StackPanel Grid.Row="1" Margin="30" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="MiniTube" 
+    <StackPanel Grid.Row="1" Margin="30" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Text="MiniTube" 
                            Foreground="Black" 
                            FontSize="30"
                            FontWeight="DemiBold" 
                            HorizontalAlignment="Center"/>
-                <TextBlock Text="Email" Foreground="Gray" FontSize="14" Margin="0,20,0,0"/>
-                <TextBox Name="txt_email" Height="30" BorderBrush="#9a06f0" BorderThickness="0,0,0,1" Margin="0,5,0,0"/>
+        <TextBlock Text="Email" Foreground="Gray" FontSize="14" Margin="0,20,0,0"/>
+        <TextBox Name="txt_email" Height="30" BorderThickness="0,0,0,1" Margin="0,5,0,0"/>
 
-                <TextBlock Text="Password" Foreground="Gray" FontSize="14" Margin="0,20,0,0"/>
-                <PasswordBox Name="txt_password" Height="30" BorderBrush="#9a06f0" BorderThickness="0,0,0,1" Margin="0,5,0,0"/>
+        <TextBlock Text="Password" Foreground="Gray" FontSize="14" Margin="0,20,0,0"/>
+        <PasswordBox Name="txt_password" Height="30"  BorderThickness="0,0,0,1" Margin="0,5,0,0"/>
 
-                <TextBlock Name="txt_error" Foreground="Red" FontSize="14" Margin="0,10,0,0" HorizontalAlignment="Center"/>
+        <TextBlock Name="txt_error" Foreground="Red" FontSize="14" Margin="0,10,0,0" HorizontalAlignment="Center"/>
 
-                <Button Name="btn_login" Content="Log In" Width="150" Height="40" Margin="0,30,0,0" 
+        <Button Name="btn_login" Content="Log In" Width="150" Height="40" Margin="0,30,0,0" 
                         Background="#9a06f0" Foreground="White" Click="btn_login_Click"/>
 
-                <TextBlock Text="Forget Password? Reset" 
+        <TextBlock Text="Forget Password? Reset" 
                            Foreground="Gray" 
                            FontSize="14" 
                            HorizontalAlignment="Center" 
                            Cursor="Hand" 
                            MouseLeftButtonUp="btn_reset_Click" Margin="0,10,0,0"/>
-                <TextBlock Text="Register" Foreground="#851698" FontSize="14" Cursor="Hand" HorizontalAlignment="Center" MouseLeftButtonUp="btn_register_Click"/>
-            </StackPanel>
-        </Grid>
-    </Border>
+        <TextBlock Text="Register" FontSize="14" Cursor="Hand" HorizontalAlignment="Center" MouseLeftButtonUp="btn_register_Click"/>
+    </StackPanel>
 </Window>
