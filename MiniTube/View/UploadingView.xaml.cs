@@ -78,10 +78,7 @@ namespace MiniTube.View
         {
             return _thumbnail != null && _video != null &&
                    !string.IsNullOrEmpty(txt_title.Text) &&
-                   !string.IsNullOrEmpty(txt_description.Text) &&
-                   !string.IsNullOrEmpty(txt_k1.Text) &&
-                   !string.IsNullOrEmpty(txt_k2.Text) &&
-                   !string.IsNullOrEmpty(txt_k3.Text);
+                   !string.IsNullOrEmpty(txt_description.Text);
         }
 
         // ----- Upload Video to Database -----
@@ -89,9 +86,6 @@ namespace MiniTube.View
         {
             string title = txt_title.Text;
             string description = txt_description.Text;
-            string keyword1 = txt_k1.Text;
-            string keyword2 = txt_k2.Text;
-            string keyword3 = txt_k3.Text;
 
             using (var context = new MiniTubeContext())
             {
@@ -110,9 +104,9 @@ namespace MiniTube.View
                     Description = description,
                     Thumbnail = _thumbnail,
                     VideoFile = _video,
-                    Keyword1 = keyword1,
-                    Keyword2 = keyword2,
-                    Keyword3 = keyword3,
+                    Keyword1 = "",
+                    Keyword2 = "",
+                    Keyword3 = "",
                     UploadDate = DateTime.Now
                 };
 
@@ -130,15 +124,9 @@ namespace MiniTube.View
         {
             txt_title.Clear();
             txt_description.Clear();
-            txt_k1.Clear();
-            txt_k2.Clear();
-            txt_k3.Clear();
             _thumbnail = null;
             _video = null;
             _videoPath = string.Empty;
-            media_video.Source = null;
-            img_thumb.Source = null;
-            btn_stack.Visibility = Visibility.Hidden;
         }
 
         // ----- Navigate to Uploading View -----
@@ -170,7 +158,7 @@ namespace MiniTube.View
                 try
                 {
                     _thumbnail = File.ReadAllBytes(openFileDialog.FileName);
-                    img_thumb.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+                    //img_thumb.Source = new BitmapImage(new Uri(openFileDialog.FileName));
                     btn_thumbupload.Opacity = 0;
                 }
                 catch (Exception ex)
@@ -193,42 +181,35 @@ namespace MiniTube.View
                 {
                     _video = File.ReadAllBytes(openFileDialog.FileName);
                     _videoPath = openFileDialog.FileName;
-                    media_video.Source = new Uri(_videoPath);
-                    media_video.LoadedBehavior = MediaState.Manual;
-                    media_video.Play();
+                    
                     btn_vidupload.Opacity = 0;
-                    btn_stack.Visibility = Visibility.Visible;
-                    Play.Visibility = Visibility.Hidden;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"An error occurred while uploading the video: {ex.Message}");
                 }
+
+                InitialState.Visibility = Visibility.Hidden;
+                UploadForm.Visibility = Visibility.Visible;
             }
         }
 
         // ----- Play Button Click -----
         private void Play_Click(object sender, RoutedEventArgs e)
         {
-            media_video.Play();
-            Play.Visibility = Visibility.Hidden;
-            Pause.Visibility = Visibility.Visible;
+            
         }
 
         // ----- Pause Button Click -----
         private void Pause_Click(object sender, RoutedEventArgs e)
         {
-            media_video.Pause();
-            Pause.Visibility = Visibility.Hidden;
-            Play.Visibility = Visibility.Visible;
+           
         }
 
         // ----- Stop Button Click -----
         private void Stop_Click(object sender, RoutedEventArgs e)
         {
-            media_video.Stop();
-            Pause.Visibility = Visibility.Hidden;
-            Play.Visibility = Visibility.Visible;
+            
         }
     }
 }
