@@ -107,7 +107,7 @@ namespace MiniTube.View
         {
             try
             {
-                RegisterationView registrationView = new RegisterationView();
+                RegisterationViewIn registrationView = new RegisterationViewIn();
                 registrationView.Show(); // Show registration view
                 this.Close(); // Close the login window
             }

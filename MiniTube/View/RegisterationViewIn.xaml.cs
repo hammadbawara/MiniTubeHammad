@@ -63,7 +63,7 @@ namespace MiniTube.View
         {
             try
             {
-                RegisterationView registerationView = new RegisterationView();
+                RegisterationViewIn registerationView = new RegisterationViewIn();
                 registerationView.Show();
                 this.Close();
             }
