@@ -271,20 +271,21 @@ namespace MiniTube.View
         // ----- Update the like button image based on the like state -----
         private void UpdateLikeImage()
         {
-            if (isLiked)
-            {
-                like.Source = new BitmapImage(new Uri("/Images/liked.png", UriKind.Relative)); // Path to the liked image
-            }
-            else
-            {
-                like.Source = new BitmapImage(new Uri("/Images/like.png", UriKind.Relative)); // Path to the unliked image
-            }
+        //    if (isLiked)
+        //    {
+        //        like.Source = new BitmapImage(new Uri("/Images/liked.png", UriKind.Relative)); // Path to the liked image
+        //    }
+        //    else
+        //    {
+        //        like.Source = new BitmapImage(new Uri("/Images/like.png", UriKind.Relative)); // Path to the unliked image
+        //    }
         }
 
         // ----- Comment button click event handler -----
         private void btn_cmt_Click(object sender, RoutedEventArgs e)
         {
-            string commentText = txt_cmt.Text.Trim();
+            //string commentText = txt_cmt.Text.Trim();
+            string commentText = "h";
 
             if (!string.IsNullOrEmpty(commentText))
             {
@@ -303,7 +304,7 @@ namespace MiniTube.View
                     MessageBox.Show("Comment added!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     // Clear comment textbox
-                    txt_cmt.Clear();
+                    //txt_cmt.Clear();
                 }
             }
             else
