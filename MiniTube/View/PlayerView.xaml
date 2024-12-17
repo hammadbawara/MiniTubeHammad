@@ -9,13 +9,14 @@
     <Grid>
         <!-- Top Bar -->
         <Grid.RowDefinitions>
-            <RowDefinition Height="60" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" Background="#F1F1F1">
+            <Button Content="Back" Margin="10,0,10,0"></Button>
             <Image Source="/Images/vlogo.png" Width="120" Height="40" />
-            <TextBox Name="txt_search" FontSize="14" FontWeight="Medium" Width="345" Margin="10,0" 
+            <TextBox Name="txt_search" FontSize="14" FontWeight="Medium" Width="500" Margin="10,0" 
                      KeyDown="txt_search_KeyDown" VerticalAlignment="Center" />
             <Button Name="btn_search" Width="40" Height="40" Margin="10,0" Click="btn_search_Click">
                 <Image Source="/Images/search.png" />
