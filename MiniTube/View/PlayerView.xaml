@@ -89,9 +89,16 @@
                         <TextBlock Name="description" TextWrapping="Wrap" FontSize="16" Margin="0,0,0,10"
                                    Text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet." />
                         <StackPanel Orientation="Horizontal">
-                            <Button Name="like" Content="Like" Width="75" Margin="5" />
-                            <Button Name="btn_comment" Content="Comment" Width="100" Margin="5" />
+                            <Button Name="like" Content="Like" Width="75" Margin="0,5,0,5" />
                         </StackPanel>
+                        <Grid Margin="0,0,10,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Grid.Column="0" Text="Enter your comment here"></TextBox>
+                            <Button Grid.Column="1" Name="btn_comment" Content="Comment" Width="100" Margin="5" />
+                        </Grid>
                     </StackPanel>
                 </ScrollViewer>
 
