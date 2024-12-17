@@ -47,7 +47,7 @@
                     <Button Name="btn_play" Content="Play" Grid.Column="0" Width="75" Margin="5" Click="btn_play_Click" />
                     <Button Name="btn_pause" Content="Pause" Grid.Column="0" Width="75" Margin="5" Click="btn_pause_Click" />
                     <Button Name="btn_stop" Content="Stop" Grid.Column="1" Width="75" Margin="5" Click="btn_stop_Click" />
-                    <TextBlock Text="Playing Video" Grid.Column="2" Foreground="White" VerticalAlignment="Center" Margin="10" />
+                    <TextBlock Text="Playing Video" Grid.Column="2" Foreground="White" VerticalAlignment="Center" Margin="10"/>
                 </Grid>
 
                 <!-- Hover Trigger -->

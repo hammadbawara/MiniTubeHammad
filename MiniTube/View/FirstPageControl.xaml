@@ -3,38 +3,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MiniTube.View"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="533" Background="Transparent">
 
-    <!--<Border Name="bdr_video" BorderBrush="Gray" BorderThickness="0" Margin="20" CornerRadius="5" Background="Transparent"
-           MouseDown="bdr_video_MouseDown">
+    <Border BorderBrush="Gray" BorderThickness="1" Margin="10" CornerRadius="10" Background="White"
+            Name="bdr_video" MouseDown="bdr_video_MouseDown">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="160"/>
-                <RowDefinition Height="40"/>
+                <!-- Thumbnail Section -->
+                <RowDefinition Height="180"/>
+                <!-- Title Section -->
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Image Grid.Row="0" Source="{Binding ImagePath}" Height="160" Width="284" 
-                   HorizontalAlignment="center" Stretch="Fill" VerticalAlignment="Top"/>
-            <StackPanel Grid.Row="1" Orientation="Horizontal" Height="40" VerticalAlignment="Bottom">
-                <TextBlock HorizontalAlignment="Center" Text="{Binding Title}" TextWrapping="Wrap"
-                           FontSize="20" FontFamily="Helvetica Lt Std" FontWeight="Medium" Foreground="Black"/>
-            </StackPanel>
-        </Grid>
-    </Border>-->
 
-    <Border BorderBrush="Gray" BorderThickness="0" Margin="20" CornerRadius="5" Background="Transparent" Name="bdr_video" MouseDown="bdr_video_MouseDown">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="160"/>
-                <RowDefinition Height="40"/>
-            </Grid.RowDefinitions>
-                <Image Grid.Row="0" Height="160" Width="284" 
-                   HorizontalAlignment="center" Stretch="Fill" VerticalAlignment="Top" Source="{Binding ImagePath}" />
-            <StackPanel Grid.Row="1" Orientation="Horizontal" Height="40" VerticalAlignment="Bottom">
-                <TextBlock HorizontalAlignment="Center" Text="{Binding Title}" TextWrapping="Wrap"
-                           FontSize="20" FontFamily="Helvetica Lt Std" FontWeight="Medium" Foreground="Black"/>
-            </StackPanel>
+            <!-- Thumbnail with Rounded Corners -->
+            <Border Grid.Row="0" CornerRadius="10" ClipToBounds="True">
+                <Image Height="180" Width="300" Stretch="Fill" Source="{Binding ImagePath}" />
+            </Border>
+
+            <!-- Video Title -->
+            <TextBlock Grid.Row="1" Text="{Binding Title}" TextWrapping="Wrap" 
+                       FontSize="16" FontFamily="Helvetica Lt Std" FontWeight="Medium" Foreground="Black" 
+                       Width="300" HorizontalAlignment="Center" Margin="5,10,5,5" TextAlignment="Center"/>
         </Grid>
     </Border>
 </UserControl>
