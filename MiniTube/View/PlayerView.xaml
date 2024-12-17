@@ -13,14 +13,11 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" Background="#F1F1F1">
+        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" Background="#F5F5F5">
             <Button Content="Back" Margin="10,0,10,0"></Button>
             <Image Source="/Images/vlogo.png" Width="120" Height="40" />
-            <TextBox Name="txt_search" FontSize="14" FontWeight="Medium" Width="500" Margin="10,0" 
+            <TextBox Name="txt_search" FontSize="14" FontWeight="Medium" Width="700" Margin="10,0" 
                      KeyDown="txt_search_KeyDown" VerticalAlignment="Center" />
-            <Button Name="btn_search" Width="40" Height="40" Margin="10,0" Click="btn_search_Click">
-                <Image Source="/Images/search.png" />
-            </Button>
         </StackPanel>
 
         <!-- Main Content -->
@@ -34,12 +31,12 @@
 
             <!-- Video Player Section -->
             <Grid Grid.Row="0">
-                <MediaElement Name="media_video" Source="/Videos/sample.mp4" Stretch="None"
+                <MediaElement Name="media_video" Source="/Videos/sample.mp4" Stretch="Uniform"
                               LoadedBehavior="Manual" UnloadedBehavior="Stop" />
 
                 <!-- Video Controls -->
                 <Grid Background="#80000000" Opacity="0" Name="videoControls"
-                      VerticalAlignment="Bottom" Height="50" Margin="10">
+                      VerticalAlignment="Bottom" Height="50" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />

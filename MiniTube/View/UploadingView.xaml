@@ -11,7 +11,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center"> 
+        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" Background="#F5F5F5"> 
             <Button Content="Back" Margin="10,0,10,0" ></Button>
             <Image Source="/Images/vlogo.png" Width="120" Height="40" />
         </StackPanel>
