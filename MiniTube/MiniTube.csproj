@@ -11,23 +11,29 @@
   <ItemGroup>
     <None Remove="Images\asCreator.png" />
     <None Remove="Images\asViewer.png" />
+    <None Remove="Images\avatar.png" />
     <None Remove="Images\back.png" />
     <None Remove="Images\bg.png" />
     <None Remove="Images\bg2.png" />
     <None Remove="Images\close.jpg" />
+    <None Remove="Images\cloud-computing.png" />
     <None Remove="Images\comment.png" />
     <None Remove="Images\delete.png" />
     <None Remove="Images\description.png" />
+    <None Remove="Images\dislike.png" />
     <None Remove="Images\email.png" />
+    <None Remove="Images\image-.png" />
     <None Remove="Images\insight.png" />
     <None Remove="Images\k1.png" />
     <None Remove="Images\k2.png" />
     <None Remove="Images\k3.png" />
     <None Remove="Images\lbut.png" />
+    <None Remove="Images\like %281%29.png" />
     <None Remove="Images\like.png" />
     <None Remove="Images\liked.png" />
     <None Remove="Images\logo.jpg" />
     <None Remove="Images\logout.png" />
+    <None Remove="Images\loupe.png" />
     <None Remove="Images\mini.jpg" />
     <None Remove="Images\pass.png" />
     <None Remove="Images\pause.png" />
@@ -37,6 +43,8 @@
     <None Remove="Images\reset.png" />
     <None Remove="Images\search.png" />
     <None Remove="Images\sel.png" />
+    <None Remove="Images\setting.png" />
+    <None Remove="Images\sign-up.png" />
     <None Remove="Images\stop.png" />
     <None Remove="Images\studio.png" />
     <None Remove="Images\title.png" />
@@ -63,14 +71,18 @@
   <ItemGroup>
     <Resource Include="Images\asCreator.png" />
     <Resource Include="Images\asViewer.png" />
+    <Resource Include="Images\avatar.png" />
     <Resource Include="Images\back.png" />
     <Resource Include="Images\bg.png" />
     <Resource Include="Images\bg2.png" />
     <Resource Include="Images\close.jpg" />
+    <Resource Include="Images\cloud-computing.png" />
     <Resource Include="Images\comment.png" />
     <Resource Include="Images\delete.png" />
     <Resource Include="Images\description.png" />
+    <Resource Include="Images\dislike.png" />
     <Resource Include="Images\email.png" />
+    <Resource Include="Images\image-.png" />
     <Resource Include="Images\insight.png" />
     <Resource Include="Images\k1.png" />
     <Resource Include="Images\k2.png" />
@@ -80,6 +92,7 @@
     <Resource Include="Images\liked.png" />
     <Resource Include="Images\logo.jpg" />
     <Resource Include="Images\logout.png" />
+    <Resource Include="Images\loupe.png" />
     <Resource Include="Images\mini.jpg" />
     <Resource Include="Images\pass.png" />
     <Resource Include="Images\pause.png" />
@@ -89,11 +102,15 @@
     <Resource Include="Images\reset.png" />
     <Resource Include="Images\search.png" />
     <Resource Include="Images\sel.png" />
+    <Resource Include="Images\setting.png" />
+    <Resource Include="Images\sign-up.png" />
     <Resource Include="Images\stop.png" />
     <Resource Include="Images\studio.png" />
     <Resource Include="Images\title.png" />
     <Resource Include="Images\un.png" />
-    <Resource Include="Images\upload.png" />
+    <Resource Include="Images\upload.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\uploadthumb.png" />
     <Resource Include="Images\uploadvid.png" />
     <Resource Include="Images\vlogo.png" />

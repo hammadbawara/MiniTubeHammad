@@ -14,7 +14,9 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" Background="#F5F5F5">
-            <Button Content="Back" Margin="10,0,10,0"></Button>
+            <Button Margin="10,0,10,0" Background="Transparent">
+                <Image Source="/Images/arrow_back.png" Width="24" Height="24" Margin="5" />
+            </Button>
             <Image Source="/Images/vlogo.png" Width="120" Height="40" />
             <TextBox Name="txt_search" FontSize="14" FontWeight="Medium" Width="700" Margin="10,0" 
                      KeyDown="txt_search_KeyDown" VerticalAlignment="Center" />
@@ -87,9 +89,14 @@
                         <TextBlock Name="description" TextWrapping="Wrap" FontSize="16" Margin="0,0,0,10"
                                    Text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet." />
                         <StackPanel Orientation="Horizontal">
-                            <Button Name="like" Content="Like" Width="75" Margin="0,5,0,5" />
+                            <Button Name="like" Margin="0,5,0,5" ToolTip="Like">
+                                <Image Source="/Images/like.png" Width="24" Height="24" Margin="0,0,5,0" />
+                            </Button>
+                            <Button Name="dislike" Margin="0,5,0,5" ToolTip="Dislike">
+                                <Image Source="/Images/dislike.png" Width="24" Height="24" Margin="0,0,5,0" />
+                            </Button>
                         </StackPanel>
-                        <Grid Margin="0,0,10,0">
+                        <Grid Margin="0,0,10,12">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="Auto"/>

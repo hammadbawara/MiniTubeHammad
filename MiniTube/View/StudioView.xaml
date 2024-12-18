@@ -23,12 +23,13 @@
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0">
                 <TextBox Name="txt_search" Width="345" Height="30" VerticalContentAlignment="Center"
                          FontSize="13" FontFamily="Helvetica Lt Std" FontWeight="Medium" Foreground="Black"
-                         CaretBrush="#9a06f0" BorderBrush="#9a06f0" BorderThickness="0,0,0,2.3"
+                          BorderBrush="#9a06f0" BorderThickness="0,0,0,2.3"
                          KeyDown="txt_search_KeyDown" Margin="0,0,10,0"/>
                 <Button Name="btn_search" Width="40" Height="40" Click="btn_search_Click" Cursor="Hand">
                     <Image Source="/Images/search.png"/>
                 </Button>
-                <Button Name="btn_upload" Width="80" Height="26.7" Click="btn_upload_Click" Cursor="Hand" Margin="10,0,0,0" Content="Upload">
+                <Button Name="btn_upload" Click="btn_upload_Click" Cursor="Hand" Margin="10,0,0,0" ToolTip="Upload">
+                    <Image Source="/Images/upload.png" Width="24" Height="24" Margin="0,0,5,0" />
                 </Button>
             </StackPanel>
         </DockPanel>

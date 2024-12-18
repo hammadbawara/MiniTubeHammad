@@ -7,7 +7,7 @@
         WindowState="Maximized"
         ResizeMode="NoResize"
         WindowStyle="SingleBorderWindow"
-        Background="White">
+        >
 
     <Grid>
         <!-- Header Section -->
@@ -36,17 +36,18 @@
 
             <Button Grid.Column="2" Name="btn_search" Cursor="Hand" Click="btn_search_Click" 
                     HorizontalAlignment="Center" Margin="5">
-                <TextBlock Text="Search" FontSize="14"/>
+                <Image Source="/Images/search.png" Width="24" Height="24" Margin="0,0,5,0" />
             </Button>
 
             <Button Grid.Column="3" Name="btn_studio" Cursor="Hand" Click="btn_studio_Click" 
-                    HorizontalAlignment="Center"  Margin="5">
-                <TextBlock Text="Studio"  FontSize="14"/>
+                    HorizontalAlignment="Center"  Margin="5" ToolTip="Studio">
+                <Image Source="/Images/setting.png" Width="24" Height="24" Margin="0,0,5,0" />
             </Button>
 
             <Button Grid.Column="4" Name="btn_logout" Cursor="Hand" Click="btn_logout_Click" 
-                    HorizontalAlignment="Center" Margin="5">
-                <TextBlock Text="Logout" FontSize="14"/>
+                    HorizontalAlignment="Center" Margin="5" ToolTip="Logout">
+                <Image Source="/Images/logout.png" Width="24" Height="24" Margin="0,0,5,0" />
+                
             </Button>
         </Grid>
 
