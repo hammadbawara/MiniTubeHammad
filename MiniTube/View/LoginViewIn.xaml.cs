@@ -103,7 +103,7 @@ namespace MiniTube.View
         }
 
         // ----- Handles the registration button click event -----
-        private void btn_register_Click(object sender, MouseButtonEventArgs e)
+        private void btn_register_Click(object sender, RoutedEventArgs e)
         {
             try
             {
