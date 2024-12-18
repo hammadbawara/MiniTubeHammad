@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using Microsoft.EntityFrameworkCore;
+using MahApps.Metro.Controls;
 
 namespace MiniTube.View
 {
@@ -14,7 +15,7 @@ namespace MiniTube.View
     /// Interaction logic for InsightView.xaml
     /// Displays insights for a specific video, including title, description, likes, and comments.
     /// </summary>
-    public partial class InsightView : Window
+    public partial class InsightView : MetroWindow
     {
         private int Id; // Video ID for insights
         private int uId; // User ID

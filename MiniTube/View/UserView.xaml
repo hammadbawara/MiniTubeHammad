@@ -1,4 +1,4 @@
-﻿<Window x:Class="MiniTube.View.UserView"
+﻿<mah:MetroWindow  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="MiniTube.View.UserView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MiniTube"
@@ -57,4 +57,4 @@
                        HorizontalAlignment="Center" VerticalAlignment="Top" />
         </ScrollViewer>
     </Grid>
-</Window>
+</mah:MetroWindow>

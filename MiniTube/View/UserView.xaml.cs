@@ -1,4 +1,5 @@
-﻿using MiniTube.Context;
+﻿using MahApps.Metro.Controls;
+using MiniTube.Context;
 using System;
 using System.IO;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace MiniTube.View
     /// <summary>
     /// Interaction logic for UserView.xaml
     /// </summary>
-    public partial class UserView : Window
+    public partial class UserView : MetroWindow
     {
         private int UserId = -1;
 

@@ -1,4 +1,4 @@
-﻿<Window x:Class="MiniTube.View.InsightView"
+﻿<mah:MetroWindow  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="MiniTube.View.InsightView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="InsightView" Width="1920" Height="1080"
@@ -226,4 +226,4 @@
             </Border>
         </Border>
     </Border>
-</Window>
+</mah:MetroWindow>

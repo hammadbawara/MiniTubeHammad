@@ -1,4 +1,5 @@
-﻿using MiniTube.ModelsEAD;
+﻿using MahApps.Metro.Controls;
+using MiniTube.ModelsEAD;
 using System;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -11,7 +12,7 @@ namespace MiniTube.View
     /// Interaction logic for LoginViewIn.xaml
     /// Provides a user interface for user login.
     /// </summary>
-    public partial class LoginViewIn : Window
+    public partial class LoginViewIn : MetroWindow
     {
         // ----- Default constructor -----
         public LoginViewIn()
@@ -107,8 +108,8 @@ namespace MiniTube.View
         {
             try
             {
-                RegisterationViewIn registrationView = new RegisterationViewIn();
-                registrationView.Show(); // Show registration view
+                    RegisterationViewIn registrationView = new RegisterationViewIn();
+                    registrationView.Show(); // Show registration view
                 this.Close(); // Close the login window
             }
             catch (Exception ex)

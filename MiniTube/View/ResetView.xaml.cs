@@ -1,4 +1,5 @@
-﻿using MiniTube.ModelsEAD;
+﻿using MahApps.Metro.Controls;
+using MiniTube.ModelsEAD;
 using System;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -9,7 +10,7 @@ namespace MiniTube.View
     /// <summary>
     /// Interaction logic for ResetView.xaml
     /// </summary>
-    public partial class ResetView : Window
+    public partial class ResetView : MetroWindow
     {
         // ----- Constructor -----
         public ResetView()

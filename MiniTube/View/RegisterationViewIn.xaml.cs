@@ -1,4 +1,5 @@
-﻿using MiniTube.ModelsEAD;
+﻿using MahApps.Metro.Controls;
+using MiniTube.ModelsEAD;
 using System;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -6,7 +7,7 @@ using System.Windows.Input;
 
 namespace MiniTube.View
 {
-    public partial class RegisterationViewIn : Window
+    public partial class RegisterationViewIn : MetroWindow
     {
         private string? person;
 

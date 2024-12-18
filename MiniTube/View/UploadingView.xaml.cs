@@ -5,6 +5,7 @@ using System.Windows.Media.Imaging;
 using System.IO;
 using Microsoft.Win32;
 using System.Windows.Controls;
+using MahApps.Metro.Controls;
 
 namespace MiniTube.View
 {
@@ -12,7 +13,7 @@ namespace MiniTube.View
     /// Interaction logic for UploadingView.xaml
     /// This view allows users to upload videos along with thumbnails and metadata.
     /// </summary>
-    public partial class UploadingView : Window
+    public partial class UploadingView : MetroWindow
     {
         private byte[]? _thumbnail;
         private byte[]? _video;

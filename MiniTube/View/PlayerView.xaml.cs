@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MahApps.Metro.Controls;
+using Microsoft.EntityFrameworkCore;
 using MiniTube.Context;
 using MiniTube.ModelsEAD;
 using System;
@@ -16,7 +17,7 @@ namespace MiniTube.View
     /// Interaction logic for PlayerView.xaml
     /// Provides a user interface for video playback, comments, and related videos.
     /// </summary>
-    public partial class PlayerView : Window
+    public partial class PlayerView : MetroWindow
     {
         private int UserId;
         private int VideoId;

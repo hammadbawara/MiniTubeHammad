@@ -10,13 +10,14 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using Microsoft.EntityFrameworkCore;
 using System.Windows.Media.Imaging;
+using MahApps.Metro.Controls;
 
 namespace MiniTube.View
 {
     /// <summary>
     /// Interaction logic for StudioView.xaml
     /// </summary>
-    public partial class StudioView : Window
+    public partial class StudioView : MetroWindow
     {
         private int UserId;
 
